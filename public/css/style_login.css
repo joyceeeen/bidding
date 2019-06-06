@@ -1,0 +1,38 @@
+
+
+footer.page-footer {
+    bottom: 0;
+    color: #fff;
+
+    width: 100%;
+}
+.top-nav-collapse, .page-footer {
+  background-color: #388e3c !important
+}
+
+.navbar:not(.top-nav-collapse) {
+    background: #388e3c !important;
+    box-shadow: none;
+}
+
+@media (max-width: 991px) {
+    .navbar:not(.top-nav-collapse) {
+      background-color: #388e3c !important
+      box-shadow: none;
+      }
+}
+@media(min-width:1024px){
+  main{
+    padding-top:50px;
+  }
+}
+@media(max-width:1024px){
+
+  footer.page-footer {
+      bottom: 0;
+      color: #fff;
+      position: relative !important;
+      width: 100%;
+  }
+
+}
