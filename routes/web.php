@@ -35,6 +35,7 @@ Route::resource('seller','UserController')->middleware('auth');
 Route::prefix('seller')->group(function () {
 
   Route::middleware(['auth','seller'])->group(function(){
+    Route::get('/','ProductsController@myProducts')->name('product.my-products');
 
     Route::resource('product','ProductsController');
     Route::resource('photos','PhotosController');

@@ -17,7 +17,8 @@ $(document).ready(function() {
     // Default options
     var settings = $.extend({
       url: '/province',
-      condition: null
+      condition: null,
+      value: null
 
     }, options );
 
@@ -25,32 +26,37 @@ $(document).ready(function() {
 
     if(settings.condition){
       $.getJSON(settings.url, function (data) {
+
         var key = $(settings.condition).find(":selected").data('key');
         $.each(data, function (key, entry) {
           if(key === entry.province){
-                select.append($('<option></option>').attr('value', entry.name).data('key',entry.key).text(entry.name));
+            var value = settings.value == null ? entry.name : entry.key;
+            select.append($('<option></option>').attr('value', value).data('key',entry.key).text(entry.name));
           }
         })
       });
     }else{
       $.getJSON(settings.url, function (data) {
-        $.each(data, function (key, entry) {
 
-          select.append($('<option></option>').attr({'value': entry.name, 'data-key':entry.key}).text(entry.name));
+        $.each(data, function (key, entry) {
+            var value = settings.value == null ? entry.name : entry.key;
+          select.append($('<option></option>').attr({'value': value, 'data-key':entry.key}).text(entry.name));
         })
       });
     }
-
-
 
     // Apply options
     return this;
     // }
   };
 
+  if($('#province').length){
+    $("#province").options();
+  }
+  if($("#category").length){
 
-  $("#province").options();
-    $("#category").options({url:"/seller/category/create"});
+    $("#category").options({url:"/seller/category/create",value: 'key'});
+  }
   // $("#province").on('change',function(){
   //   $("#city").options({url:'/city', condition: '#province'});
   // });

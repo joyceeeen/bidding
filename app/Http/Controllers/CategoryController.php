@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
-use ProductCategory;
+use App\ProductCategory;
+use Vinkla\Hashids\Facades\Hashids;
 class CategoryController extends Controller
 {
     /**
@@ -14,9 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-      $data = Category::all()->toJson();
-
-      return $data;
+            dd($request);
+      // $data = Category::all()->toJson();
+      //
+      // return $data;
     }
 
 
@@ -40,10 +42,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
+      $product = Hashids::decode($request->product)[0];
       $category = new ProductCategory();
-      $category->product_id = $request->product;
+      $category->product_id = $product;
       $category->category_id = $request->category;
-      $upload->save();
+      $category->save();
+
+      return redirect()->route('product.my-products');
     }
 
     /**

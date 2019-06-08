@@ -14,6 +14,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
+      dd('hi');
     }
 
     /**
@@ -49,6 +50,9 @@ class ProductsController extends Controller
 
         return redirect()->route('photos.create', ['product' => $product->hash]);
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -94,4 +98,18 @@ class ProductsController extends Controller
     {
         //
     }
+
+    //CUSTOM FUNCTIONS
+    /**
+     * Display the sellers products
+     *
+     * @param  \App\Products  $products
+     * @return \Illuminate\Http\Response
+     */
+     public function myProducts(){
+
+       $product = Products::where('user_id', auth()->user()->id);
+
+       return view('products.my-products',compact('product'));
+     }
 }
