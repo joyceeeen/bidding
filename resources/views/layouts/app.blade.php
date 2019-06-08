@@ -28,11 +28,11 @@
   <header>
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark white scrolling-navbar">
-      <div class="container">
+      <div class="container-fluid">
 
         <!-- Brand -->
-        <a class="navbar-brand waves-effect" href="/home">
-          <strong class="blue-text">Crops Bidding System</strong>
+        <a class="navbar-brand waves-effect" href="/">
+          <strong>Crops Bidding System</strong>
         </a>
 
         <!-- Collapse -->
@@ -157,7 +157,7 @@
 <!--Copyright-->
 <div class="footer-copyright py-3">
   © 2018 Copyright:
-  <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+  <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> JRU</a>
 </div>
 <!--/.Copyright-->
 

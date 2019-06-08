@@ -75,3 +75,6 @@ svg:not(:root) {
     margin-left: auto;
     margin-right: auto;
 }
+.select-wrapper input.select-dropdown{
+  color: #495057 !important;
+}

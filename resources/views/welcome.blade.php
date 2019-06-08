@@ -51,7 +51,7 @@
 
             <!-- Grid column -->
             <div class="col-lg-5 text-center text-lg-left">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/screens-section.jpg" alt="Sample image">
+                <img class="img-fluid" src="images/4.jpg" alt="Sample image">
             </div>
             <!-- Grid column -->
 
@@ -153,7 +153,7 @@
             <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                 <!--Featured image-->
                 <div class="view overlay rounded z-depth-1">
-                    <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid" alt="Sample project image">
+                    <img src="images/1.jpg" class="img-fluid" alt="Sample project image">
                     <a>
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -173,7 +173,7 @@
             <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
                 <!--Featured image-->
                 <div class="view overlay rounded z-depth-1">
-                    <img src="https://mdbootstrap.com/img/Photos/Others/project4.jpg" class="img-fluid" alt="Sample project image">
+                    <img src="images/5.jpg" class="img-fluid" alt="Sample project image">
                     <a>
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -193,7 +193,7 @@
             <div class="col-lg-4 col-md-6">
                 <!--Featured image-->
                 <div class="view overlay rounded z-depth-1">
-                    <img src="https://mdbootstrap.com/img/Photos/Others/images/88.jpg" class="img-fluid" alt="Sample project image">
+                    <img src="images/3.jpg" class="img-fluid" alt="Sample project image">
                     <a>
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -241,7 +241,7 @@
                     <figure class="col-md-4">
                         <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg"
                             data-size="1600x1067">
-                            <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(145).jpg"
+                            <img src="images/fruits/1.jpg"
                                 class="img-fluid z-depth-1-half">
                         </a>
                     </figure>
@@ -249,7 +249,7 @@
                     <figure class="col-md-4">
                         <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(150).jpg"
                             data-size="1600x1067">
-                            <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(150).jpg"
+                            <img src="images/fruits/2.jpg"
                                 class="img-fluid z-depth-1-half" />
                         </a>
                     </figure>
@@ -257,14 +257,14 @@
                     <figure class="col-md-4">
                         <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(152).jpg"
                             data-size="1600x1067">
-                            <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(152).jpg"
+                            <img src="images/fruits/3.jpg"
                                 class="img-fluid z-depth-1-half" />
                         </a>
                     </figure>
 
                     <figure class="col-md-4">
                         <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(42).jpg" data-size="1600x1067">
-                            <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(42).jpg"
+                          <img src="images/fruits/4.jpg"
                                 class="img-fluid z-depth-1-half" />
                         </a>
                     </figure>
@@ -272,14 +272,14 @@
                     <figure class="col-md-4">
                         <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(151).jpg"
                             data-size="1600x1067">
-                            <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(151).jpg"
+                            <img src="images/fruits/5.jpg"
                                 class="img-fluid z-depth-1-half" />
                         </a>
                     </figure>
 
                     <figure class="col-md-4">
                         <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg" data-size="1600x1067">
-                            <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(40).jpg"
+                          <img src="images/fruits/6.jpg"
                                 class="img-fluid z-depth-1-half" />
                         </a>
                     </figure>
@@ -287,7 +287,7 @@
                     <figure class="col-md-4">
                         <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(148).jpg"
                             data-size="1600x1067">
-                            <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(148).jpg"
+                            <img src="images/fruits/7.jpg"
                                 class="img-fluid z-depth-1-half" />
                         </a>
                     </figure>
@@ -295,7 +295,7 @@
                     <figure class="col-md-4">
                         <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg"
                             data-size="1600x1067">
-                            <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg"
+                            <img src="images/fruits/8.jpg"
                                 class="img-fluid z-depth-1-half" />
                         </a>
                     </figure>
@@ -303,7 +303,7 @@
                     <figure class="col-md-4">
                         <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg"
                             data-size="1600x1067">
-                            <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(149).jpg"
+                            <img src="images/fruits/9.jpg"
                                 class="img-fluid z-depth-1-half" />
                         </a>
                     </figure>
@@ -322,7 +322,7 @@
 
 
 <!--Section: call to action-->
-<div class="streak streak-md streak-photo" style="background-image:url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img(115).jpg')">
+<div class="streak streak-md streak-photo" style="background-image:url('images/6.jpg')">
     <div class="flex-center rgba-black-light pattern-1">
         <div class="white-text smooth-scroll mx-4">
             <h2 class="h2-responsive mb-5 wow fadeIn">If you have any legal problem in your life ... We are
@@ -364,11 +364,11 @@
               <div class="card collection-card z-depth-1-half">
                 <!-- Card image -->
                 <div class="view zoom">
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/5.jpg" class="img-fluid"
+                  <img src="images/fruits/portrait/5.jpg" class="img-fluid"
                     alt="">
                   <div class="stripe dark">
                     <a>
-                      <p>Red trousers
+                      <p>Cherries
                         <i class="fas fa-angle-right"></i>
                       </p>
                     </a>
@@ -386,11 +386,11 @@
               <div class="card collection-card z-depth-1-half">
                 <!-- Card image -->
                 <div class="view zoom">
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/8.jpg" class="img-fluid"
+                  <img src="images/fruits/portrait/2.jpg" class="img-fluid"
                     alt="">
                   <div class="stripe light">
                     <a>
-                      <p>Sweatshirt
+                      <p>Fruits
                         <i class="fas fa-angle-right"></i>
                       </p>
                     </a>
@@ -408,11 +408,11 @@
               <div class="card collection-card z-depth-1-half">
                 <!-- Card image -->
                 <div class="view zoom">
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/9.jpg" class="img-fluid"
+                  <img src="images/fruits/portrait/3.jpg" class="img-fluid"
                     alt="">
                   <div class="stripe dark">
                     <a>
-                      <p>Accessories
+                      <p>Wholesale
                         <i class="fas fa-angle-right"></i>
                       </p>
                     </a>
@@ -430,11 +430,11 @@
               <div class="card collection-card z-depth-1-half">
                 <!-- Card image -->
                 <div class="view zoom">
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/7.jpg" class="img-fluid"
+                  <img src="images/fruits/portrait/4.jpg" class="img-fluid"
                     alt="">
                   <div class="stripe light">
                     <a>
-                      <p>Sweatshirt
+                      <p>Crops
                         <i class="fas fa-angle-right"></i>
                       </p>
                     </a>
@@ -459,111 +459,7 @@
 <!--Section: articles-->
 
 <!--Section: contact-->
-<section id="contact" class="py-5" style="background-color: #eee;">
 
-    <div class="container">
-
-        <!-- Section heading -->
-        <h2 class="h1-responsive font-weight-bold text-center mb-5">Contact us</h2>
-        <!-- Section description -->
-        <p class="text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.</p>
-
-        <!-- Grid row -->
-        <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-9 mb-md-0 mb-5">
-
-            <form>
-
-                <!-- Grid row -->
-                <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-6">
-                    <div class="md-form mb-0">
-                    <input type="text" id="contact-name" class="form-control">
-                    <label for="contact-name" class="">Your name</label>
-                    </div>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-6">
-                    <div class="md-form mb-0">
-                    <input type="text" id="contact-email" class="form-control">
-                    <label for="contact-email" class="">Your email</label>
-                    </div>
-                </div>
-                <!-- Grid column -->
-
-                </div>
-                <!-- Grid row -->
-
-                <!-- Grid row -->
-                <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-12">
-                    <div class="md-form mb-0">
-                    <input type="text" id="contact-Subject" class="form-control">
-                    <label for="contact-Subject" class="">Subject</label>
-                    </div>
-                </div>
-                <!-- Grid column -->
-
-                </div>
-                <!-- Grid row -->
-
-                <!-- Grid row -->
-                <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-12">
-                    <div class="md-form">
-                    <textarea type="text" id="contact-message" class="form-control md-textarea" rows="3"></textarea>
-                    <label for="contact-message">Your message</label>
-                    </div>
-                </div>
-                <!-- Grid column -->
-
-                </div>
-                <!-- Grid row -->
-
-            </form>
-
-            <div class="text-center text-md-left">
-                <a class="btn btn-green btn-md">Send</a>
-            </div>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-3 text-center">
-            <ul class="list-unstyled mb-0">
-                <li>
-                <i class="fa fa-map-marker fa-2x green-text"></i>
-                <p>San Francisco, CA 94126, USA</p>
-                </li>
-                <li>
-                <i class="fa fa-phone fa-2x mt-4 green-text"></i>
-                <p>+ 01 234 567 89</p>
-                </li>
-                <li>
-                <i class="fa fa-envelope fa-2x mt-4 green-text"></i>
-                <p class="mb-0">contact@example.com</p>
-                </li>
-            </ul>
-            </div>
-            <!-- Grid column -->
-
-        </div>
-        <!-- Grid row -->
-
-    </div>
-
-</section>
 <!--Section: contact-->
 
 </main>
