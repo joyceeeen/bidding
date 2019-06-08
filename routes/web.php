@@ -25,6 +25,9 @@ Route::get('/products/specific', function () {
 
 Auth::routes();
 
+Route::get('province','DataController@province');
+Route::get('city','DataController@city');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('seller','UserController')->middleware('auth');
@@ -35,6 +38,7 @@ Route::prefix('seller')->group(function () {
 
     Route::resource('product','ProductsController');
     Route::resource('photos','PhotosController');
+    Route::resource('category','CategoryController');
 
   });
 });

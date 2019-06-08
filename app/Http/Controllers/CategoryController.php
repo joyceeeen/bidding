@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
-
+use ProductCategory;
 class CategoryController extends Controller
 {
     /**
@@ -14,8 +14,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+      $data = Category::all()->toJson();
+
+      return $data;
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +27,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+      $data = Category::select('id as key','category_name as name')->get()->toJson();
+  //  $data = Category::all()->toJson();
+      return $data;
     }
 
     /**
@@ -35,7 +40,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $category = new ProductCategory();
+      $category->product_id = $request->product;
+      $category->category_id = $request->category;
+      $upload->save();
     }
 
     /**

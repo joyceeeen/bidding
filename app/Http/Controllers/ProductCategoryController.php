@@ -14,7 +14,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+      
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        //
+      return view('products.add-category')
     }
 
     /**

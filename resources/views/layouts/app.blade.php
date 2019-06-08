@@ -13,6 +13,8 @@
   <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="{{asset('css/mdb.min.css')}}" rel="stylesheet">
+  <link href="{{asset('css/select2.min.css')}}" rel="stylesheet">
+
   <!-- Your custom styles (optional) -->
   <link href="{{asset('css/dropzone.css')}}" rel="stylesheet">
 
@@ -113,18 +115,6 @@
 <!--Footer-->
 <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-  <!--Call to action-->
-  <div class="pt-4">
-    <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-    role="button">Download MDB
-    <i class="fas fa-download ml-2"></i>
-  </a>
-  <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-    free tutorial
-    <i class="fas fa-graduation-cap ml-2"></i>
-  </a>
-</div>
-<!--/.Call to action-->
 
 <hr class="my-4">
 
@@ -182,7 +172,8 @@
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- MDB core JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script type="text/javascript" src="{{asset('js/select2.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/dropzone.min.js')}}"></script>
 

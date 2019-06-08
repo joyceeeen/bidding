@@ -47,11 +47,13 @@
                   </div>
                 </div>
                 <div class="form-row">
-
                   <div class="col">
                     <div class="md-form">
-                      <input type="text" id="province" class="form-control @error('province') is-invalid @enderror" name="province" value="{{ old('province') }}" required autocomplete="name" autofocus>
-                      <label for="province">Pick-up Province Address</label>
+                      <select  name="province" value="{{ old('province') }}" id="province" class="mdb-select md-form @error('province') is-invalid @enderror" required>
+                        <option value="" disabled selected>Select Provice</option>
+
+                      </select>
+                      <label for="status">Province</label>
                       @error('province')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -59,6 +61,21 @@
                       @enderror
                     </div>
                   </div>
+                  <!-- <div class="col">
+                    <div class="md-form">
+                      <select  name="city" value="{{ old('city') }}"  id="city"  class="mdb-select md-form @error('city') is-invalid @enderror" required>
+                        <option value="" disabled selected>Select City</option>
+
+                      </select>
+                      <label for="status">City</label>
+                      @error('city')
+                      <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                    </div>
+                  </div> -->
+
                 </div>
                 <div class="form-row">
                   <div class="col">
@@ -128,9 +145,9 @@
                     <div class="md-form">
                       <select id="unit" name="unit" value="{{ old('unit') }}" class="mdb-select md-form @error('unit') is-invalid @enderror" required>
                         <option value="" disabled selected>Select Unit</option>
-                          <option value="kg">Kilogram (kg)</option>
-                          <option value="g">Grams (g)</option>
-                          <option value="lb">Pounds (lb)</option>
+                        <option value="kg">Kilogram (kg)</option>
+                        <option value="g">Grams (g)</option>
+                        <option value="lb">Pounds (lb)</option>
                       </select>
                       <label for="status">Unit</label>
                       @error('unit')
@@ -139,7 +156,6 @@
                       </span>
                       @enderror
                     </div>
-
                   </div>
                 </div>
                 <!-- Sign up button -->
