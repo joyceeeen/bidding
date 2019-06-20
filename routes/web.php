@@ -32,10 +32,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('seller','UserController')->middleware('auth');
 
+
 Route::prefix('shop')->group(function () {
 
   Route::middleware(['auth','seller'])->group(function(){
+
     Route::get('/','ProductsController@myProducts')->name('product.my-products');
+
     Route::resource('product','ProductsController');
     Route::resource('orders','OrdersController');
     Route::resource('photos','PhotosController');

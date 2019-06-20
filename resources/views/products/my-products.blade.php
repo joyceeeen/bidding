@@ -74,9 +74,7 @@
                     <strong>Last Price: PHP {{$product->lastBid == null ? $product->base_price : $product->lastBid->amount}}</strong>
                   </span>
 
-                  <span class="float-left font-weight-bold">
-                    <strong>Last Price: PHP {{$product->lastBid == null ? $product->base_price : $product->lastBid->amount}}</strong>
-                  </span>
+                
                 </div>
               </div>
               <!-- Card content -->
