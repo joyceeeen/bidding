@@ -13,7 +13,7 @@
           <!--Grid column-->
           <div class="col-md-6 mb-4">
 
-            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt="">
+            <img src="{{$product->thumbnail->img_path}}" class="img-fluid" alt="">
 
           </div>
           <!--Grid column-->
@@ -26,34 +26,32 @@
 
               <div class="mb-3">
                 <a href="">
-                  <span class="badge purple mr-1">Category 2</span>
+                  <span class="badge purple mr-1">{{$product->mainCategory->description->category_name}}</span>
                 </a>
-                <a href="">
+                <!-- <a href="">
                   <span class="badge blue mr-1">New</span>
                 </a>
                 <a href="">
                   <span class="badge red mr-1">Bestseller</span>
-                </a>
+                </a> -->
               </div>
 
-              <p class="lead">
-                <span class="mr-1">
-                  <del>$200</del>
-                </span>
-                <span>$100</span>
-              </p>
 
               <p class="lead font-weight-bold">Description</p>
 
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa
-                sint voluptatibus!
-                Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+              <p>{{$product->description}}</p>
+              <p class="lead">
+                <label>Last Price:</label>
+                <span>PHP {{ $product->lastBid != null ? $product->lastBid->amount : $product->base_price }}</span>
+              </p>
 
-              <form class="d-flex justify-content-left">
+              <form action="{{route('orders.store',['product'=>$product->hash])}}" method="post" class="d-flex justify-content-left">
+                @csrf
                 <!-- Default input -->
-                <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
-                <button class="btn btn-success btn-md my-0 p" type="submit">Add to cart
-                  <i class="fas fa-shopping-cart ml-1"></i>
+                <input type="hidden" name="lastBid" value="{{$product->lastBid != null ? $product->lastBid->amount : $product->base_price }}"/>
+                <input type="number" min="{{$product->lastBid != null ? $product->lastBid->amount + 1 : $product->base_price + 1 }}" name="bid" class="form-control" style="width: 100px">
+                <button class="btn btn-success btn-md my-0 p" type="submit"> Bid
+                  <i class="fas fa-gavel ml-1"></i>
                 </button>
 
               </form>
@@ -69,6 +67,28 @@
 
         <hr>
 
+        @if($product->user_id === auth()->user()->id)
+        <h3>Bidding History</h3>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Date of Bid</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($product->bids as $bid)
+              <tr>
+                <td>{{$bid->user->name}}</td>
+                <td>{{$bid->amount}}</td>
+                <td>{{$bid->created_at}}</td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+          <hr>
+        @endif
         <!--Grid row-->
         <div class="row d-flex justify-content-center wow fadeIn">
 

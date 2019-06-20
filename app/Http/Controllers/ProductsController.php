@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Products;
 use Illuminate\Http\Request;
+use Vinkla\Hashids\Facades\Hashids;
 
 class ProductsController extends Controller
 {
@@ -12,9 +13,13 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      dd('hi');
+
+      $productId = Hashids::decode($request->product)[0];
+      $product = Products::whereId($productId)->with(['lastBid','mainCategory.description','thumbnail','bids.user'])->first();
+
+      return View('products.product',compact('product'));
     }
 
     /**
@@ -108,8 +113,8 @@ class ProductsController extends Controller
      */
      public function myProducts(){
 
-       $product = Products::where('user_id', auth()->user()->id);
+       $products = Products::where('user_id', auth()->user()->id)->with(['lastBid','mainCategory.description','thumbnail'])->get();
 
-       return view('products.my-products',compact('product'));
+       return view('products.my-products',compact('products'));
      }
 }
