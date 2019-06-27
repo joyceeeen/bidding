@@ -55,7 +55,7 @@ $(document).ready(function() {
   }
   if($("#category").length){
 
-    $("#category").options({url:"/seller/category/create",value: 'key'});
+    $("#category").options({url:"/shop/category/create",value: 'key'});
   }
   // $("#province").on('change',function(){
   //   $("#city").options({url:'/city', condition: '#province'});
