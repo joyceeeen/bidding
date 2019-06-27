@@ -43,7 +43,7 @@ class PhotosController extends Controller
         $product = Hashids::decode($request->product)[0];
         // foreach ($files as $file) {
           $thumbnailImage = Image::make($file);
-          $originalPath = '/images/'.$request->product.'/';
+          $originalPath = 'images/'.$request->product.'/';
 
           if (!File::exists($originalPath)) {
             File::makeDirectory($originalPath, 0775, true, true);

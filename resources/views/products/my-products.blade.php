@@ -29,7 +29,7 @@
             <div class="card card-cascade narrower card-ecommerce">
               <!-- Card image -->
               <div class="view view-cascade overlay">
-                <img src="{{$product->thumbnail->img_path}}" class="card-img-top"
+                <img src="{{asset($product->thumbnail->img_path)}}" class="card-img-top"
                 alt="sample photo">
                 <a href="{{route('product.index', ['product'=>$product->hash])}}">
                   <div class="mask rgba-white-slight"></div>
@@ -74,7 +74,7 @@
                     <strong>Last Price: PHP {{$product->lastBid == null ? $product->base_price : $product->lastBid->amount}}</strong>
                   </span>
 
-                
+
                 </div>
               </div>
               <!-- Card content -->
