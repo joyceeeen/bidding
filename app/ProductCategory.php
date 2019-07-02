@@ -12,6 +12,6 @@ class ProductCategory extends Model
 
       public function description(){
 
-        return $this->belongsTo('App\Category','product_id','id');
+        return $this->hasOne('App\Category','id','category_id');
       }
 }
