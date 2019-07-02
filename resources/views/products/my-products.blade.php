@@ -39,9 +39,7 @@
               <!-- Card content -->
               <div class="card-body card-body-cascade text-center">
                 <!-- Category & Title -->
-                <a class="grey-text">
-                  <h5>{{$product->mainCategory->description->category_name}}</h5>
-                </a>
+                
                 <h4 class="card-title">
                   <strong>
                     <a href="{{route('product.index', ['product'=>$product->hash])}}">{{$product->title}}</a>
