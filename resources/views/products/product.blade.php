@@ -44,7 +44,9 @@
                 <label>Last Price:</label>
                 <span>PHP {{ $product->lastBid != null ? $product->lastBid->amount : $product->base_price }}</span>
               </p>
+              @if($product->user_id === auth()->user()->id)
 
+              @else
               <form action="{{route('orders.store',['product'=>$product->hash])}}" method="post" class="d-flex justify-content-left">
                 @csrf
                 <!-- Default input -->
@@ -55,7 +57,7 @@
                 </button>
 
               </form>
-
+              @endif
             </div>
             <!--Content-->
 
