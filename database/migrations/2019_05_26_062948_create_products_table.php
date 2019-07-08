@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->datetime('starts_on');
             $table->datetime('ends_on');
             $table->double('base_price',8,2);
+            $table->boolean('has_ended')->nullable();
             $table->integer('weight');
             $table->string('unit');
             $table->timestamps();

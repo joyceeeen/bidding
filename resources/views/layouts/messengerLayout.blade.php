@@ -47,19 +47,14 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="/shop/product">Shop
+            <a class="nav-link waves-effect" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          @if(auth()->check() && auth()->user()->is_seller)
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{{route('product.my-products')}}" >My Products</a>
+            <a class="nav-link waves-effect" href="{{route('product.my-products')}}" >Products</a>
           </li>
-          @endif
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="/purchasedItem">Purchased Items
-            </a>
-          </li>
+
         </ul>
 
         <!-- Right -->
@@ -112,16 +107,16 @@
 <div id="app">
 
 
-  <main class="py-4">
+  <main class="pt-4">
     @yield('content')
   </main>
 </div>
 
 <!--Footer-->
-<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+<footer class="page-footer text-center font-small wow fadeIn">
 
 
-<hr class="my-4">
+<hr class="mb-4" style="margin-top:0px;">
 
 <!-- Social icons -->
 <div class="pb-4">
@@ -183,3 +178,21 @@
 <script type="text/javascript" src="{{asset('js/dropzone.min.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+<script type="text/javascript">
+(function($) {
+  var $window = $(window),
+      $html = $('html');
+
+  function resize() {
+      if ($window.width() > 1300) {
+          return $('.test').addClass('container');
+      }
+
+      $('.test').removeClass('container');
+  }
+
+  $window
+      .resize(resize)
+      .trigger('resize');
+})(jQuery);
+</script>

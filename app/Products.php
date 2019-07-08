@@ -41,6 +41,5 @@ class Products extends Model
 
   public function lastBid(){
     return $this->hasOne('App\Orders','product_id')->latest();
-
   }
 }

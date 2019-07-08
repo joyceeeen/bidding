@@ -9,7 +9,7 @@
     <section class="text-center my-5">
 
       <!-- Section heading -->
-      <h2 class="h1-responsive font-weight-bold text-center my-5">My Products</h2>
+      <h2 class="h1-responsive font-weight-bold text-center my-5">Products</h2>
       <!-- Section description -->
       <p class="grey-text text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur
         adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas
@@ -24,14 +24,14 @@
         <div class="row">
 
           @foreach($products as $product)
-          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
             <!-- Card -->
             <div class="card card-cascade narrower card-ecommerce mb-4 mt-4">
               <!-- Card image -->
               <div class="view view-cascade overlay">
                 <img src="{{asset($product->thumbnail->img_path)}}" class="card-img-top"
                 alt="sample photo">
-                <a href="{{route('product.index', ['product'=>$product->hash])}}">
+                <a href="{{route('product.show', ['product'=>$product->hash])}}">
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>
@@ -44,7 +44,7 @@
                 </a>
                 <h4 class="card-title">
                   <strong>
-                    <a href="{{route('product.index', ['product'=>$product->hash])}}">{{$product->title}}</a>
+                    <a href="{{route('product.show', ['product'=>$product->hash])}}">{{$product->title}}</a>
                   </strong>
                 </h4>
                 <!--Rating-->
@@ -70,15 +70,11 @@
                 </p>
                 <!-- Card footer -->
                 <div class="card-footer px-1">
-                  <p><span class="font-weight-bold">
-                    <strong>Last Price: PHP {{$product->lastBid == null ? $product->base_price : $product->lastBid->amount}}</strong>
-                  </span></p>
-                  <p class="mb-0">
-                    <span class="badge red mr-1">Expired</span>
-                  </p>
-                  <p class="mb-0">
-                    <span class="badge green mr-1">Sold</span>
-                  </p>
+                  <span class="float-left font-weight-bold">
+                    <strong>Last Bid: PHP {{$product->lastBid == null ? $product->base_price : $product->lastBid->amount}}</strong>
+                  </span>
+
+
                 </div>
               </div>
               <!-- Card content -->

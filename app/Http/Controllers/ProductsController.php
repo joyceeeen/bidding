@@ -15,11 +15,10 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
+      $products = Products::all();
 
-      $productId = Hashids::decode($request->product)[0];
-      $product = Products::whereId($productId)->with(['lastBid','mainCategory.description','thumbnail','bids.user'])->first();
+      return view('products.products',compact('products'));
 
-      return View('products.product',compact('product'));
     }
 
     /**
@@ -65,9 +64,12 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show(Request $request)
     {
-        //
+      $productId = Hashids::decode($request->product)[0];
+      $product = Products::whereId($productId)->with(['lastBid','mainCategory.description','thumbnail','bids.user'])->first();
+      return View('products.product',compact('product'));
+
     }
 
     /**

@@ -5,8 +5,33 @@
 
 <!--Main layout-->
 <main class="mt-5 pt-4">
-  <div class="container dark-grey-text mt-5">
+  <div class="container dark-grey-text">
+    <div class="row">
+      <div class="col-lg-12 pb-5">
+        <!-- design process steps-->
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs process-model more-icon-preocess" role="tablist">
+          <li role="presentation" class="active"><a href="#discover" aria-controls="discover" role="tab" data-toggle="tab"><i class="fas fa-box-open"></i>
+            <p>Accepted</p>
+          </a></li>
+          <li role="presentation"><a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab"><i class="far fa-clock"></i>
+            <p>In Progress</p>
+          </a></li>
+          <li role="presentation"><a href="#optimization" aria-controls="optimization" role="tab" data-toggle="tab"><i class="fas fa-truck"></i>
+            <p>Shipped</p>
+          </a></li>
+          <li role="presentation"><a href="#content" aria-controls="content" role="tab" data-toggle="tab"><i class="fas fa-gifts"></i>
+            <p>Delivered</p>
+          </a></li>
+          <li role="presentation"><a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab"><i class="fa fa-check" aria-hidden="true"></i>
+            <p>Complete</p>
+          </a></li>
+        </ul>
+        <!-- end design process steps-->
+        <!-- Tab panes -->
 
+      </div>
+    </div>
     <!--Grid row-->
     <div class="row wow fadeIn">
 
@@ -14,17 +39,12 @@
       <div class="col-md-6 mb-4">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            @foreach($product->photos as $key => $photo)
-            <li data-target="#carouselExampleIndicators" data-slide-to="{{$key}}" class=""></li>
-            @endforeach
 
           </ol>
           <div class="carousel-inner">
-            @foreach($product->photos as $key=>$photo)
-            <div class="carousel-item {{$key === 0 ? 'active' :''}}">
-              <img class="d-block w-100 imgCarousel" src="{{asset($photo->img_path)}}" alt="First slide">
+            <div class="carousel-item active">
+              <img class="d-block w-100 imgCarousel" src="http://localhost:8000/images/028n2e/15599826555cfb723f4d1ac.jpg" alt="First slide">
             </div>
-            @endforeach
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -51,12 +71,12 @@
           </p>
           <div>
             <a>
-              <span class="badge blue mr-1">{{$product->mainCategory->description->category_name}}</span>
+              <span class="badge blue mr-1">Test</span>
             </a>
           </div>
 
 
-          <p class="lead font-weight-bold mb-0">{{$product->title}}</p>
+          <p class="lead font-weight-bold mb-0">Test</p>
 
           <ul class="rating">
             <li>
@@ -78,11 +98,11 @@
 
 
 
-          <p class="mb-0">Unit: {{$product->base_price.' '.$product->unit}}</p>
-          <p class="mb-0">Address: {{$product->location}}</p>
+          <p class="mb-0">Unit: 2222</p>
+          <p class="mb-0">Address: yeyy</p>
           <hr>
           <p class="lead font-weight-bold mb-0" style="color:#ffa000;font-size:30px;">
-            <span>PHP {{ $product->lastBid != null ? $product->lastBid->amount : $product->base_price }}</span>
+            <span>PHP 5000</span>
           </p>
           @if(auth()->check() && auth()->user()->is_seller)
 
@@ -124,29 +144,6 @@
     @endif
 
 
-    @if(auth()->check() && auth()->user()->is_seller)
-    <hr>
-    <h3>Bidding History</h3>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Date of Bid</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($product->bids as $bid)
-        <tr>
-          <td>{{$bid->user->name}}</td>
-          <td>{{$bid->amount}}</td>
-          <td>{{$bid->created_at}}</td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-    <hr>
-    @endif
 
     <!--Grid row-->
 
