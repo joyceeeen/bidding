@@ -99,15 +99,15 @@
                 <i class="fas fa-gavel ml-1"></i>
               </button>
             </form>
+            <br>
+            <p class="lead font-weight-bold">
+              Bidding will end at {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}
+            </p>
             @else
             <p class="mb-0 font-weight-bold">Bidding ended last {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}</p>
             @endif
           @endif
-          @if($product->ends_on <= Carbon\Carbon::now())
-          <p class="lead font-weight-bold">
-            Bidding will end at {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}
-          </p>
-          @endif
+
           <hr>
           <p class="lead font-weight-bold">Product Details</p>
           <p>{{$product->description}}</p>
