@@ -373,3 +373,162 @@ svg:not(:root) {
         text-align: center;
     }
 }
+/* -----------------------------------------
+   Timeline
+----------------------------------------- */
+.timeline {
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+}
+
+.timeline li {
+  position: relative;
+}
+
+.timeline li .timeline-date {
+  display: inline-block;
+  width: 100%;
+  color: #a6a6a6;
+  font-style: italic;
+  font-size: 13px;
+}
+
+
+.timeline.timeline-advanced li .timeline-date {
+  width: 75px;
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  text-align: right;
+}
+.timeline.timeline-advanced li .timeline-title {
+  font-size: 17px;
+  margin-bottom: 0;
+  padding-top: 5px;
+  font-weight: bold;
+}
+.timeline.timeline-advanced li .timeline-subtitle {
+  display: inline-block;
+  width: 100%;
+  color: #a6a6a6;
+}
+.timeline.timeline-advanced li .timeline-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-right: 70px;
+}
+.timeline.timeline-advanced li .timeline-content p {
+  margin-bottom: 3px;
+}
+.timeline.timeline-advanced li .timeline-content .divider-dashed {
+  padding-top: 0px;
+  margin-bottom: 7px;
+  width: 200px;
+}
+
+.timeline.timeline-advanced li .timeline-user .timeline-user-name {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.timeline.timeline-advanced li .timeline-user .timeline-user-subtitle {
+  color: #a6a6a6;
+  margin-top: -4px;
+  margin-bottom: 0;
+}
+.timeline.timeline-advanced li .timeline-link {
+  margin-left: 5px;
+  display: inline-block;
+}
+.timeline-load-more-btn {
+  margin-left: 70px;
+}
+.timeline-load-more-btn i {
+  margin-right: 5px;
+}
+
+
+/* -----------------------------------------
+   Dropdown
+----------------------------------------- */
+.dropdown-menu{
+    padding:0 0 0 0;
+}
+a.dropdown-menu-header {
+    font-weight: bold;
+    border-bottom: 1px solid #e3e3e3;
+    width: 100%;
+}
+.dropdown-menu > li a {
+    padding: 10px 20px;
+}
+
+.show a i{
+  color: #000000 !important;
+}
+/* -----------------------------------------
+   Badge
+----------------------------------------- */
+
+.badge{
+    padding: 3px 5px 2px;
+    position: absolute;
+    right: 5px;
+    display: inline-block;
+    min-width: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.badge-category{
+    padding: 3px 5px 2px;
+    position: absolute;
+    top: 8px;
+    display: inline-block;
+    min-width: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
+}
+.badge-danger {
+    background-color: #db5565;
+}
+.beeperNub {
+  height: 11px;
+  position: absolute;
+  top: -19px;
+  width: 35px;
+  font-size: 30px;
+  left: 15px;
+  color: #fff;
+}
+
+.timeline a li span i{
+  padding-right: 8px;
+}
+.timeline  a li{
+  padding:0px !important;
+}
+.timeline a:hover{
+  background: #e3e3e3;
+}
+.timeline a{
+    width: 100%;
+      border-bottom: 1px solid #e3e3e3;
+        padding:10px !important;
+}
+
+.nav-dropdown .dropdown .dropdown-menu{
+  padding: 1px !important;
+}

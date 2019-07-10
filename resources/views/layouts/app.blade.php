@@ -51,15 +51,20 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          @if(auth()->check() && auth()->user()->is_seller)
+          @if(auth()->check())
+
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="/purchased-items">Purchased Items
+            </a>
+          </li>
+          @if(auth()->user()->is_seller)
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{{route('product.my-products')}}" >My Products</a>
           </li>
           @endif
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="/purchasedItem">Purchased Items
-            </a>
-          </li>
+
+          @endif
+
         </ul>
 
         <!-- Right -->
@@ -77,9 +82,40 @@
           </li>
           @endif
           @else
+          <li class="nav-item nav-dropdown">
+            <div class="dropdown" style="padding: 13px;margin-top:-3px;float:right;">
+              <a href="#" onclick="return false;" role="button" data-toggle="dropdown" id="dropdownMenu1" data-target="#" style="float: left;    margin-top: 2px;" aria-expanded="true">
+                <i class="fas fa-bell" style="font-size: 20px; float: left; color: #fff">
+                </i>
+              </a>
+              <span class="badge badge-danger">6</span>
+              <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                <div class="beeperNub"><i class="fas fa-sort-up"></i></div>
+
+                <li role="presentation">
+                  <a href="#" class="dropdown-menu-header">Notifications</a>
+                </li>
+                <ul class="timeline timeline-icons timeline-sm" style="width:210px">
+                  <a href="#">
+                    <li class="icon">
+                      <span class="icon"><i class="fa fa-user"></i></span>
+                      <span class="text">Someone Like Your Post</span>
+                    </li>
+                  </a>
+                  <a href="#">
+                    <li class="icon">
+                      <span class="icon"><i class="fa fa-user"></i></span>
+                      <span class="text">Someone Like Your Post</span>
+                    </li>
+                  </a>
+                </ul>
+
+              </ul>
+            </div>
+          </li>
           <li class="nav-item">
             @if(Auth::user()->is_seller)
-              <a class="nav-link" href="{{ route('product.create') }}">Add Product</a>
+            <a class="nav-link" href="{{ route('product.create') }}">Add Product</a>
             @else
             <a class="nav-link" href="{{ route('seller.index') }}">Become A Seller</a>
             @endif
@@ -121,50 +157,50 @@
 <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
 
-<hr class="my-4">
+  <hr class="my-4">
 
-<!-- Social icons -->
-<div class="pb-4">
-  <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-    <i class="fab fa-facebook-f mr-3"></i>
-  </a>
+  <!-- Social icons -->
+  <div class="pb-4">
+    <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+      <i class="fab fa-facebook-f mr-3"></i>
+    </a>
 
-  <a href="https://twitter.com/MDBootstrap" target="_blank">
-    <i class="fab fa-twitter mr-3"></i>
-  </a>
+    <a href="https://twitter.com/MDBootstrap" target="_blank">
+      <i class="fab fa-twitter mr-3"></i>
+    </a>
 
-  <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-    <i class="fab fa-youtube mr-3"></i>
-  </a>
+    <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+      <i class="fab fa-youtube mr-3"></i>
+    </a>
 
-  <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-    <i class="fab fa-google-plus-g mr-3"></i>
-  </a>
+    <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+      <i class="fab fa-google-plus-g mr-3"></i>
+    </a>
 
-  <a href="https://dribbble.com/mdbootstrap" target="_blank">
-    <i class="fab fa-dribbble mr-3"></i>
-  </a>
+    <a href="https://dribbble.com/mdbootstrap" target="_blank">
+      <i class="fab fa-dribbble mr-3"></i>
+    </a>
 
-  <a href="https://pinterest.com/mdbootstrap" target="_blank">
-    <i class="fab fa-pinterest mr-3"></i>
-  </a>
+    <a href="https://pinterest.com/mdbootstrap" target="_blank">
+      <i class="fab fa-pinterest mr-3"></i>
+    </a>
 
-  <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-    <i class="fab fa-github mr-3"></i>
-  </a>
+    <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
+      <i class="fab fa-github mr-3"></i>
+    </a>
 
-  <a href="http://codepen.io/mdbootstrap/" target="_blank">
-    <i class="fab fa-codepen mr-3"></i>
-  </a>
-</div>
-<!-- Social icons -->
+    <a href="http://codepen.io/mdbootstrap/" target="_blank">
+      <i class="fab fa-codepen mr-3"></i>
+    </a>
+  </div>
+  <!-- Social icons -->
 
-<!--Copyright-->
-<div class="footer-copyright py-3">
-  © 2018 Copyright:
-  <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> JRU</a>
-</div>
-<!--/.Copyright-->
+  <!--Copyright-->
+  <div class="footer-copyright py-3">
+    © 2018 Copyright:
+    <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> JRU</a>
+  </div>
+  <!--/.Copyright-->
 
 </footer>
 <!--/.Footer-->

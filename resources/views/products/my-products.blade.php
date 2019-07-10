@@ -31,7 +31,7 @@
               <div class="view view-cascade overlay">
                 <img src="{{asset($product->thumbnail->img_path)}}" class="card-img-top"
                 alt="sample photo">
-                <a href="{{route('product.index', ['product'=>$product->hash])}}">
+                <a href="{{route('product.show', ['product'=>$product->hash])}}">
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>
@@ -44,7 +44,7 @@
                 </a>
                 <h4 class="card-title">
                   <strong>
-                    <a href="{{route('product.index', ['product'=>$product->hash])}}">{{$product->title}}</a>
+                    <a href="{{route('product.show', ['product'=>$product->hash])}}">{{$product->title}}</a>
                   </strong>
                 </h4>
                 <!--Rating-->
@@ -73,12 +73,16 @@
                   <p><span class="font-weight-bold">
                     <strong>Last Price: PHP {{$product->lastBid == null ? $product->base_price : $product->lastBid->amount}}</strong>
                   </span></p>
-                  <p class="mb-0">
-                    <span class="badge red mr-1">Expired</span>
-                  </p>
+                  @if($product->ends_on >= Carbon\Carbon::now() && $product->lastBid)
                   <p class="mb-0">
                     <span class="badge green mr-1">Sold</span>
                   </p>
+                  @elseif($product->ends_on >= Carbon\Carbon::now() && !$product->lastBid)
+                  <p class="mb-0">
+                    <span class="badge red mr-1">Expired</span>
+                  </p>
+                  @endif
+
                 </div>
               </div>
               <!-- Card content -->

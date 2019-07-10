@@ -23,6 +23,10 @@ class Products extends Model
     return $this->hasMany('App\ProductCategory','product_id');
   }
 
+  public function seller(){
+    return $this->belongsTo('App\User','user_id');
+  }
+
   public function photos(){
     return $this->hasMany('App\Photos','product_id');
   }

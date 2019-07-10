@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function(){
-  return redirect()->route('product.index');
+  //  return redirect()->route('product.index');
+
+  return view('welcome');
 });
 
 Route::get('/products', function () {
@@ -28,13 +30,9 @@ Route::get('/messenger', function () {
   return view('messenger');
 });
 
-Route::get('/winning', function () {
-  return view('winning');
-});
 
-Route::get('/purchased-items', function () {
-  return view('purchased-items');
-});
+
+
 
 Auth::routes();
 
@@ -45,15 +43,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('seller','UserController')->middleware('auth');
 
+Route::middleware(['auth'])->group(function(){
+  Route::get('/purchased-items','OrdersController@myOrders');
 
+  Route::get('/bought-item/{id}','OrdersController@winner')->name('order.status');
+});
 
 Route::prefix('shop')->group(function () {
-
-  Route::resource('product','ProductsController')->only([
-      'index', 'show'
-  ]);
-
   Route::middleware(['auth'])->group(function(){
+
 
     Route::resource('product','ProductsController',['except'=>['index', 'show']]);
     Route::resource('orders','OrdersController');
@@ -68,4 +66,8 @@ Route::prefix('shop')->group(function () {
     Route::resource('category','CategoryController');
 
   });
+
+  Route::resource('product','ProductsController')->only([
+    'index', 'show'
+  ]);
 });

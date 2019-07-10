@@ -11,21 +11,32 @@
         <!-- design process steps-->
         <!-- Nav tabs -->
         <ul class="nav nav-tabs process-model more-icon-preocess" role="tablist">
-          <li role="presentation" class="active"><a href="#discover" aria-controls="discover" role="tab" data-toggle="tab"><i class="fas fa-box-open"></i>
-            <p>Accepted</p>
-          </a></li>
-          <li role="presentation"><a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab"><i class="far fa-clock"></i>
-            <p>In Progress</p>
-          </a></li>
-          <li role="presentation"><a href="#optimization" aria-controls="optimization" role="tab" data-toggle="tab"><i class="fas fa-truck"></i>
-            <p>Shipped</p>
-          </a></li>
-          <li role="presentation"><a href="#content" aria-controls="content" role="tab" data-toggle="tab"><i class="fas fa-gifts"></i>
-            <p>Delivered</p>
-          </a></li>
-          <li role="presentation"><a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab"><i class="fa fa-check" aria-hidden="true"></i>
-            <p>Complete</p>
-          </a></li>
+          <li role="presentation" class="active">
+            <a href="#discover" aria-controls="discover" role="tab" data-toggle="tab"><i class="fas fa-box-open"></i>
+              <p>Bid Ended</p>
+            </a>
+          </li>
+
+          <li role="presentation">
+            <a href="#optimization" aria-controls="optimization" role="tab" data-toggle="tab"><i class="fas fa-truck"></i>
+              <p>Ready for Pick-up</p>
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#content" aria-controls="content" role="tab" data-toggle="tab"><i class="fas fa-gifts"></i>
+              <p>Product Received</p>
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab"><i class="far fa-star"></i>
+              <p>Rate </p>
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab"><i class="fa fa-check" aria-hidden="true"></i>
+              <p>Complete</p>
+            </a>
+          </li>
         </ul>
         <!-- end design process steps-->
         <!-- Tab panes -->
@@ -71,12 +82,12 @@
           </p>
           <div>
             <a>
-              <span class="badge blue mr-1">Test</span>
+              <span class="badge-category blue mr-1">{{$product->mainCategory->description->category_name}}</span>
             </a>
           </div>
 
 
-          <p class="lead font-weight-bold mb-0">Test</p>
+          <p class="lead font-weight-bold mb-0">{{$product->title}}</p>
 
           <ul class="rating">
             <li>
@@ -98,36 +109,36 @@
 
 
 
-          <p class="mb-0">Unit: 2222</p>
-          <p class="mb-0">Address: yeyy</p>
+          <p class="mb-0">Unit: {{$product->base_price.' '.$product->unit}}</p>
+          <p class="mb-0">Address: {{$product->location}}</p>
           <hr>
+          <span>Last Price:</span>
           <p class="lead font-weight-bold mb-0" style="color:#ffa000;font-size:30px;">
-            <span>PHP 5000</span>
+
+            <span> PHP {{$product->lastBid->amount}}</span>
           </p>
-          @if(auth()->check() && auth()->user()->is_seller)
 
-          @else
-
-          @if($product->ends_on >= Carbon\Carbon::now())
-          <form action="{{route('orders.store',['product'=>$product->hash])}}" method="post" class="d-flex justify-content-left">
-            @csrf
-            <!-- Default input -->
-            <input type="hidden" name="lastBid" value="{{$product->lastBid != null ? $product->lastBid->amount : $product->base_price }}"/>
-            <input type="number" min="{{$product->lastBid != null ? $product->lastBid->amount + 1 : $product->base_price + 1 }}" name="bid" class="form-control" style="width: 100px">
-            <button class="btn btn-success btn-md my-0 p" type="submit"> Bid
-              <i class="fas fa-gavel ml-1"></i>
-            </button>
-          </form>
-          @else
-          <p class="mb-0 font-weight-bold">Bidding ended last {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}</p>
-
-          @endif
-          @if($product->ends_on >= Carbon\Carbon::now())
           <p class="lead font-weight-bold">
-            Bidding will end at {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}
+            Bidding ended last {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}
           </p>
-          @endif
+
           <hr>
+
+          @if($product->lastBid->user_id == auth()->user()->id)
+          <p class="lead font-weight-bold">
+            Seller: {{$product->seller->name}}
+          </p>
+
+          <a href="/messenger">Chat Seller</a>
+          @else
+          <p class="lead font-weight-bold">
+            Buyer: {{$product->lastBid->user->name}}
+
+          </p>
+
+          <a href="/messenger">Chat Buyer</a>
+          @endif
+
         </div>
         <!--Content-->
 
@@ -141,9 +152,6 @@
     <p>{{$product->description}}</p>
 
     <!--Grid row-->
-    @endif
-
-
 
     <!--Grid row-->
 
