@@ -86,7 +86,7 @@
 
             <span>PHP {{ $product->lastBid != null ? $product->lastBid->amount : $product->base_price }}</span>
           </p>
-          @if(auth()->check() && auth()->user()->is_seller)
+          @if(auth()->check() && ($product->user_id == auth()->user()-id))
 
           @else
             @if($product->ends_on >= Carbon\Carbon::now())
