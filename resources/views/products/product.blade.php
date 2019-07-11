@@ -124,7 +124,7 @@
 
 
 
-    @if(auth()->check() && auth()->user()->is_seller)
+    @if(auth()->check() && ($product->user_id == auth()->user()->id))
     <hr>
     <h3>Bidding History</h3>
     <table class="table table-hover">
