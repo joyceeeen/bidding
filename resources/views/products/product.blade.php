@@ -138,7 +138,7 @@
       <tbody>
         @foreach($product->bids as $bid)
         <tr>
-          <td>{{$bid->user->name}}</td>
+          <td>{{$bid->user ? $bid->user->name : ''}}</td>
           <td>{{$bid->amount}}</td>
           <td>{{$bid->created_at}}</td>
         </tr>
