@@ -46,24 +46,12 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link waves-effect" href="/shop/product">Shop
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          @if(auth()->check())
 
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="/purchased-items">Purchased Items
-            </a>
-          </li>
-          @if(auth()->user()->is_seller)
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="{{route('product.my-products')}}" >My Products</a>
-          </li>
-          @endif
-
-          @endif
 
         </ul>
 
@@ -125,7 +113,19 @@
               {{ Auth::user()->name }} <span class="caret"></span>
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+
+            <div class="dropdown-menu dropdown-menu-right">
+              @if(auth()->check())
+              <a class="dropdown-item" href="/my-bids">My Bids</a>
+
+              <a class="dropdown-item" href="/purchased-items">Purchased Items</a>
+              @if(auth()->user()->is_seller)
+              <a class="dropdown-item" href="{{route('product.my-products')}}" >My Products</a>
+              @endif
+
+              @endif
+
               <a class="dropdown-item" href="{{ route('logout') }}"
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">

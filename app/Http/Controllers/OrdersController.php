@@ -41,6 +41,14 @@ class OrdersController extends Controller
     return view('products.purchased-items',compact('orders'));
   }
 
+  public function myBids(){
+    $auth = auth()->user();
+    $orders = Orders::where('user_id',$auth->id)->with('product.lastBid')->get();
+
+
+    return view('products.my-bids',compact('orders'));
+  }
+
 
   /**
   * Show the form for creating a new resource.

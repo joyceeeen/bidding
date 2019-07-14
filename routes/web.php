@@ -45,6 +45,7 @@ Route::resource('seller','UserController')->middleware('auth');
 
 Route::middleware(['auth'])->group(function(){
   Route::get('/purchased-items','OrdersController@myOrders');
+  Route::get('/my-bids','OrdersController@myBids');
 
   Route::get('/bought-item/{id}','OrdersController@winner')->name('order.status');
 });
