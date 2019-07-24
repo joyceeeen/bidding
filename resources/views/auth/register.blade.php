@@ -59,7 +59,11 @@
                               </span>
                           @enderror
                       </div>
-
+                      <!-- E-mail -->
+                      <div class="md-form mt-0">
+                          <input type="text" id="materialRegisterFormEmail" class="form-control" value="" required>
+                          <label for="materialRegisterFormEmail">Phone Number</label>
+                      </div>
                       <!-- Password -->
                       <div class="md-form">
                           <input type="password" id="materialRegisterFormPassword" aria-describedby="materialRegisterFormPasswordHelpBlock" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">

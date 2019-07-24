@@ -117,12 +117,13 @@
 
             <div class="dropdown-menu dropdown-menu-right">
               @if(auth()->check())
+              @if(auth()->user()->is_seller)
+              <a class="dropdown-item" href="{{route('seller.profile',['id'=>auth()->user()->hash])}}" >My Products</a>
+              @endif
+
               <a class="dropdown-item" href="/my-bids">My Bids</a>
 
               <a class="dropdown-item" href="/purchased-items">Purchased Items</a>
-              @if(auth()->user()->is_seller)
-              <a class="dropdown-item" href="{{route('product.my-products')}}" >My Products</a>
-              @endif
 
               @endif
 

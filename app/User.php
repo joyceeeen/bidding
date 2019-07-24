@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Vinkla\Hashids\Facades\Hashids;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
   * @var array
   */
   protected $fillable = [
-    'first_name','last_name','mobile_number','is_seller', 'email', 'password',
+    'first_name','last_name','mobile_number','is_seller', 'email', 'password','is_confirmed'
   ];
 
   /**
@@ -28,7 +29,13 @@ class User extends Authenticatable
     'password', 'remember_token',
   ];
 
-  protected $appends = ['name'];
+  protected $appends = ['name','hash'];
+
+
+  public function getHashAttribute()
+  {
+    return Hashids::encode($this->id);
+  }
 
   /**
   * The attributes that should be cast to native types.
@@ -42,5 +49,13 @@ class User extends Authenticatable
   public function getNameAttribute()
   {
     return ucwords($this->first_name.' '.$this->last_name);
+  }
+
+  public function ids(){
+    return $this->hasMany('App\IdentificationPhotos','user_id','id');
+  }
+
+  public function products(){
+    return $this->hasMany('App\Products','user_id','id');
   }
 }

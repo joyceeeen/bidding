@@ -33,4 +33,5 @@ class HomeController extends Controller
       return view('products.products',compact('products'));
 
     }
+    
 }

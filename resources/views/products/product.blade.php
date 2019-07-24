@@ -111,6 +111,15 @@
           <hr>
           <p class="lead font-weight-bold">Product Details</p>
           <p>{{$product->description}}</p>
+          <hr>
+          <p style="float:right;">
+            <a href="#"><i class="fa fa-envelope text-primary" style="font-size:2em;"></i></a>
+          </p>
+          <p class="lead font-weight-bold">Being Sold By:</p>
+            <h4 class="pb-0 mb-0 font-weight-bold text-primary">Jason's Shop</h4>
+          <p>
+            <a href="{{route('seller.profile',['id'=>auth()->user()->hash])}}">View Profile</a>
+          </p>
         </div>
         <!--Content-->
 
@@ -127,6 +136,9 @@
     @if(auth()->check() && ($product->user_id == auth()->user()->id))
     <hr>
     <h3>Bidding History</h3>
+    @if($product->bids->isEmpty())
+      No Bids Yet
+    @else
     <table class="table table-hover">
       <thead>
         <tr>
@@ -146,6 +158,7 @@
       </tbody>
     </table>
     <hr>
+    @endif
     @endif
 
     <!--Grid row-->

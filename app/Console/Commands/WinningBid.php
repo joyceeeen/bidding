@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Product;
+use App\OrderStatus;
 use Carbon;
 class WinningBid extends Command
 {
@@ -38,15 +39,19 @@ class WinningBid extends Command
      */
     public function handle()
     {
-      $products = Product::where('ends_on', Carbon::now())->get();
+      $products = Product::where('ends_on','<=',Carbon::now())->get();
       foreach($products as $product){
         $product->has_ended = 1;
         $product->save();
 
         $lastBid = $product->lastBid;
-        $winner = $lastBid->user;
 
+        $order = new OrderStatus();
+        $order->order_id = $lastBid->id;
+        $order->status = 1;
+        $order->save();
 
+        //SEND EMAIL
       }
     }
 }

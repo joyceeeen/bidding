@@ -21,6 +21,8 @@ Route::get('/products', function () {
   return view('products');
 });
 
+Route::get('/seller/{id}', 'UserController@show')->name('seller.profile');
+
 Route::get('/products/specific', function () {
   return view('products/specific');
 });
@@ -30,7 +32,9 @@ Route::get('/messenger', function () {
   return view('messenger');
 });
 
-
+Route::get('/admin', function () {
+  return view('admin');
+});
 
 
 
@@ -42,6 +46,7 @@ Route::get('city','DataController@city');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('seller','UserController')->middleware('auth');
+
 
 Route::middleware(['auth'])->group(function(){
   Route::get('/purchased-items','OrdersController@myOrders');
