@@ -72,6 +72,41 @@
           </li>
           @endif
           @else
+          <li class="nav-item nav-dropdown">
+            <div class="dropdown" style="padding: 13px;margin-top:-3px;float:right;">
+              <a href="#" onclick="return false;" role="button" data-toggle="dropdown" id="dropdownMenu1" data-target="#" style="float: left;    margin-top: 2px;" aria-expanded="true">
+                <i class="fas fa-bell" style="font-size: 20px; float: left; color: #fff">
+                </i>
+              </a>
+              <span class="badge badge-danger">6</span>
+              <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                <div class="beeperNub"><i class="fas fa-sort-up"></i></div>
+
+                <li role="presentation">
+                  <a href="#" class="dropdown-menu-header">Notifications</a>
+                </li>
+                <ul class="timeline timeline-icons timeline-sm" style="width:210px">
+                  <a href="#">
+                    <li class="icon">
+                      <span class="icon"><i class="fa fa-user"></i></span>
+                      <span class="text">Someone Like Your Post</span>
+                    </li>
+                  </a>
+                  <a href="#">
+                    <li class="icon">
+                      <span class="icon"><i class="fa fa-user"></i></span>
+                      <span class="text">Someone Like Your Post</span>
+                    </li>
+                  </a>
+                </ul>
+
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('messages.index') }}">Messages</a>
+
+          </li>
           <li class="nav-item">
             @if(Auth::user()->is_seller)
               <a class="nav-link" href="{{ route('product.create') }}">Add Product</a>

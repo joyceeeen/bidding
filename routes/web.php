@@ -28,9 +28,6 @@ Route::get('/products/specific', function () {
 });
 
 
-Route::get('/messenger', function () {
-  return view('messenger');
-});
 
 Route::get('/admin', function () {
   return view('admin');
@@ -51,6 +48,7 @@ Route::resource('seller','UserController')->middleware('auth');
 Route::middleware(['auth'])->group(function(){
   Route::get('/purchased-items','OrdersController@myOrders');
   Route::get('/my-bids','OrdersController@myBids');
+  Route::resource('messages', 'ConversationController');
 
   Route::get('/bought-item/{id}','OrdersController@winner')->name('order.status');
 });

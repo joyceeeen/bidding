@@ -113,12 +113,12 @@
           <p>{{$product->description}}</p>
           <hr>
           <p style="float:right;">
-            <a href="#"><i class="fa fa-envelope text-primary" style="font-size:2em;"></i></a>
+            <a href="{{route('messages.create',['receiver'=>$product->seller->hash])}}"><i class="fa fa-envelope text-primary" style="font-size:2em;"></i></a>
           </p>
           <p class="lead font-weight-bold">Being Sold By:</p>
             <h4 class="pb-0 mb-0 font-weight-bold text-primary">Jason's Shop</h4>
           <p>
-            <a href="{{route('seller.profile',['id'=>auth()->user()->hash])}}">View Profile</a>
+            <a href="{{route('seller.profile',['id'=>$product->seller->hash])}}">View Profile</a>
           </p>
         </div>
         <!--Content-->

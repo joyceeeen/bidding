@@ -102,6 +102,11 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('messages.index') }}">Messages</a>
+
+          </li>
+          <li class="nav-item">
+
             @if(Auth::user()->is_seller)
             <a class="nav-link" href="{{ route('product.create') }}">Add Product</a>
             @else

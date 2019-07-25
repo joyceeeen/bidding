@@ -23,7 +23,7 @@
           <div class="row">
             <div class="col-xl-6 col-lg-7 text-white hs-item">
               <span>New Arrivals</span>
-              <h2>denim jackets</h2>
+              <h2>Mangoes</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
               <a href="#" class="btn btn-success">DISCOVER</a>
             </div>
@@ -43,7 +43,7 @@
           <div class="row">
             <div class="col-xl-6 col-lg-7 text-white hs-item">
               <span>New Arrivals</span>
-              <h2>denim jackets</h2>
+              <h2>Mangoes</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
               <a href="#" class="btn btn-success">DISCOVER</a>
 
@@ -64,7 +64,7 @@
           <div class="row">
             <div class="col-xl-6 col-lg-7 text-white hs-item">
               <span>New Arrivals</span>
-              <h2>denim jackets</h2>
+              <h2>Mangoes</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
               <a href="#" class="btn btn-success">DISCOVER</a>
             </div>
