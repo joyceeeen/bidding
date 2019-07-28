@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-lg-12">
       <center>
-        @if(auth()->user()->is_confirmed)
+        @if(auth()->user()->is_confirmed == 1)
         <div class="col-lg-6">
           <!-- Material form register -->
 
@@ -25,7 +25,7 @@
                 <div class="form-row">
                   <div class="col">
                     <div class="md-form">
-                      <input type="text" id="title" maxlength="191" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="name" autofocus>
+                      <input type="text" id="title" maxlength="191" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="off" autofocus>
                       <label for="title">Product Name</label>
                       @error('title')
                       <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
                   <div class="col">
                     <div class="md-form">
                       <label for="description">Additional Details</label>
-                      <textarea id="description" class="form-control @error('description') is-invalid @enderror md-textarea" name="description" value="{{ old('description') }}" required autocomplete="name"></textarea>
+                      <textarea id="description" class="form-control @error('description') is-invalid @enderror md-textarea" name="description" value="{{ old('description') }}" required autocomplete="off"></textarea>
                       @error('description')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -83,7 +83,7 @@
         <div class="form-row">
           <div class="col">
             <div class="md-form">
-              <input type="text" id="location" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="name" autofocus>
+              <input type="text" id="location" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="off" autofocus>
               <label for="location">Pick-up Complete Address</label>
               @error('location')
               <span class="invalid-feedback" role="alert">
@@ -96,7 +96,7 @@
         <div class="form-row">
           <div class="col">
             <div class="md-form">
-              <input type="date" id="starts_on" class="form-control @error('starts_on') is-invalid @enderror" name="starts_on" value="{{ old('starts_on') }}" required autocomplete="name" autofocus>
+              <input type="date" id="starts_on" class="form-control @error('starts_on') is-invalid @enderror" name="starts_on" value="{{ old('starts_on') }}" required autocomplete="off" autofocus>
               <label for="starts_on">Bidding Starts On</label>
               @error('starts_on')
               <span class="invalid-feedback" role="alert">
@@ -121,7 +121,7 @@
         <div class="form-row">
           <div class="col">
             <div class="md-form">
-              <input type="text" id="base_price" class="form-control @error('base_price') is-invalid @enderror" oninput="this.value=this.value.replace(/[^0-9]/g,'');" name="base_price" value="{{ old('base_price') }}" required>
+              <input type="text" id="base_price" class="form-control @error('base_price') is-invalid @enderror" oninput="this.value=this.value.replace(/[^0-9]/g,'');" name="base_price" autocomplete="off" value="{{ old('base_price') }}" required>
               <label for="base_price">Base Price (PHP)</label>
               @error('base_price')
               <span class="invalid-feedback" role="alert">
@@ -135,7 +135,7 @@
         <div class="form-row">
           <div class="col">
             <div class="md-form">
-              <input type="text" id="weight" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') }}" required>
+              <input type="text" id="weight" class="form-control @error('weight') is-invalid @enderror" name="weight" autocomplete="off"  value="{{ old('weight') }}" required>
               <label for="weight">Weight</label>
               @error('weight')
               <span class="invalid-feedback" role="alert">
@@ -146,7 +146,7 @@
           </div>
           <div class="col">
             <div class="md-form">
-              <select id="unit" name="unit" value="{{ old('unit') }}" class="mdb-select md-form @error('unit') is-invalid @enderror" required>
+              <select id="unit" name="unit" value="{{ old('unit') }}" class="mdb-select md-form @error('unit') is-invalid @enderror" autocomplete="off"  required>
                 <option value="" disabled selected>Select Unit</option>
                 <option value="kg">Kilogram (kg)</option>
                 <option value="g">Grams (g)</option>

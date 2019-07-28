@@ -94,7 +94,7 @@
               @csrf
               <!-- Default input -->
               <input type="hidden" name="lastBid" value="{{$product->lastBid != null ? $product->lastBid->amount : $product->base_price }}"/>
-              <input type="number" min="{{$product->lastBid != null ? $product->lastBid->amount + 1 : $product->base_price + 1 }}" name="bid" class="form-control" style="width: 100px">
+              <input type="number" min="{{$product->lastBid != null ? $product->lastBid->amount + 1 : $product->base_price + 1 }}" name="bid" autocomplete="off" class="form-control" style="width: 100px">
               <button class="btn btn-success btn-md my-0 p" type="submit"> Bid
                 <i class="fas fa-gavel ml-1"></i>
               </button>
@@ -113,10 +113,10 @@
           <p>{{$product->description}}</p>
           <hr>
           <p style="float:right;">
-            <a href="{{route('messages.create',['receiver'=>$product->seller->hash])}}"><i class="fa fa-envelope text-primary" style="font-size:2em;"></i></a>
+            <a href="{{route('messages.create',['receiver'=>$product->seller->hash,'first'=>true])}}"><i class="fa fa-envelope text-primary" style="font-size:2em;"></i></a>
           </p>
           <p class="lead font-weight-bold">Being Sold By:</p>
-            <h4 class="pb-0 mb-0 font-weight-bold text-primary">Jason's Shop</h4>
+            <h4 class="pb-0 mb-0 font-weight-bold text-primary">{{$product->seller->name}}'s Shop</h4>
           <p>
             <a href="{{route('seller.profile',['id'=>$product->seller->hash])}}">View Profile</a>
           </p>

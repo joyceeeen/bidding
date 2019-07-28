@@ -20,18 +20,40 @@ class ConversationController extends Controller
 
     $conversations = null;
     $messages = null;
-    
+
     if($request->convo){
-      $conversations = Conversation::where('user_one',$user->id)->orWhere('user_two',$user->id)->orderBy('updated_at','desc')->get();
+
+      if($request->first){
+        $conversations = Conversation::where(function ($query) use($user){
+          $query->where('user_one',$user->id)->orWhere('user_two',$user->id);
+        })->orderBy('updated_at','desc')->get();
+
+      }else{
+        $conversations = Conversation::whereHas('messages')->where(function ($query) use($user){
+          $query->where('user_one',$user->id)->orWhere('user_two',$user->id);
+        })->orderBy('updated_at','desc')->get();
+      }
+
       $messages = ConversationReply::where('conversation_id',$request->convo)->get();
     }else{
-      $conversations = Conversation::where('user_one',$user->id)->orWhere('user_two',$user->id)->orderBy('updated_at','desc')->get();
-      $messages = ConversationReply::where('conversation_id',$conversations[0]->id)->get();
+      if($request->first){
+        $conversations = Conversation::where(function ($query) use($user){
+          $query->where('user_one',$user->id)->orWhere('user_two',$user->id);
+        })->orderBy('updated_at','desc')->get();
+      }else{
+        $conversations = Conversation::whereHas('messages')->where(function ($query) use($user){
+          $query->where('user_one',$user->id)->orWhere('user_two',$user->id);
+        })->orderBy('updated_at','desc')->get();
+      }
+      $messages =null;
+      if(!$conversations->isEmpty()){
+
+        $messages = ConversationReply::where('conversation_id',$conversations[0]->id)->get();
+      }
 
     }
 
     return view('messenger',compact('conversations','user','messages'));
-
   }
 
   /**
@@ -57,8 +79,12 @@ class ConversationController extends Controller
       $createConvo->user_two = $receiver;
       $createConvo->save();
     }
-
+    if($request->first){
+      return redirect()->route('messages.index',['first'=>$request->first]);
+    }
     return redirect()->route('messages.index');
+
+
 
   }
 

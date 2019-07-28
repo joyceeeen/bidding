@@ -24,7 +24,7 @@
                     </div>
                     <!-- Email -->
                     <div class="md-form">
-                      <input id="materialLoginFormEmail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                      <input id="materialLoginFormEmail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="off" autofocus>
                       <label for="materialLoginFormEmail">E-mail</label>
                       @error('email')
                           <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
 
                     <!-- Password -->
                     <div class="md-form">
-                      <input type="password" id="materialLoginFormPassword" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                      <input type="password" id="materialLoginFormPassword" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="off">
                       <label for="materialLoginFormPassword">Password</label>
                       @error('password')
                           <span class="invalid-feedback" role="alert">

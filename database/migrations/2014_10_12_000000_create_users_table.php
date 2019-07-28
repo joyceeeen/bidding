@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('mobile_number')->nullable();
             $table->string('email')->unique();
             $table->boolean('is_seller')->default(false);
+            $table->boolean('is_admin')->default(false);
             $table->boolean('is_confirmed')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

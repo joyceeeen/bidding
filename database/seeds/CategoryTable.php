@@ -15,10 +15,10 @@ class CategoryTable extends Seeder
 
 
       DB::table('categories')->insert([
-        ['category_name' => "Vegetables",'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
-        ['category_name' => "Fruits",'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
-        ['category_name' => "Fish",'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
-        ['category_name' => "Poultry",'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
+        ['category_name' => "Vegetables",'thumbnail'=>'images/categories/vegetables.jpg','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
+        ['category_name' => "Fruits",'thumbnail'=>'images/categories/fruits.jpg','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
+        ['category_name' => "Fish",'thumbnail'=>'images/categories/fish.jpg','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
+        ['category_name' => "Poultry",'thumbnail'=>'images/categories/poultry.jpg','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
       ]);
     }
 }

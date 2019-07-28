@@ -138,7 +138,45 @@
         <!-- Section: Products v.4 -->
         <!-- Section: Products v.1 -->
         <section class="text-center my-5">
+          <div class="row pb-4">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <form method="get" action="">
+                    <div class="row">
+                      <div class="col">
+                        <div class="md-form" style="margin-top:0px;margin-bottom:0px">
+                          <select id="unit" name="unit" value="" class="mdb-select md-form @error('unit') is-invalid @enderror" autocomplete="off"  required>
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="kg">Kilogram (kg)</option>
+                            <option value="g">Grams (g)</option>
+                            <option value="lb">Pounds (lb)</option>
+                          </select>
+                          <label for="status">Unit</label>
+                          @error('unit')
+                          <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                          @enderror
+                        </div>
+                      </div>
+                      <div class="col-lg-6 searchCol">
+                        <div class="md-form" style="margin-top:0px;margin-bottom:0px">
+                          <input type="text" name="firstname" value="" class="form-control" placeholder="Product Name">
 
+                        </div>
+                      </div>
+                      <div class="col-lg-2 searchCol">
+                        <div class="md-form" style="margin-top:0px;margin-bottom:0px">
+                          <button type="submit" name="button" class="btn btn-primary" style="width:100%">Search</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Grid row -->
           <div class="row">
 

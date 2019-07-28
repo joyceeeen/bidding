@@ -17,7 +17,7 @@ class User extends Authenticatable
   * @var array
   */
   protected $fillable = [
-    'first_name','last_name','mobile_number','is_seller', 'email', 'password','is_confirmed'
+    'first_name','last_name','mobile_number','is_seller','is_admin', 'email', 'password','is_confirmed'
   ];
 
   /**
@@ -52,7 +52,7 @@ class User extends Authenticatable
   }
 
   public function ids(){
-    return $this->hasMany('App\IdentificationPhotos','user_id','id');
+    return $this->hasOne('App\IdentificationPhotos','user_id','id');
   }
 
   public function products(){

@@ -39,7 +39,7 @@ $(document).ready(function() {
       $.getJSON(settings.url, function (data) {
 
         $.each(data, function (key, entry) {
-            var value = settings.value == null ? entry.name : entry.key;
+          var value = settings.value == null ? entry.name : entry.key;
           select.append($('<option></option>').attr({'value': value, 'data-key':entry.key}).text(entry.name));
         })
       });
@@ -66,4 +66,11 @@ $(document).ready(function() {
   }, 3000);
 
   //  ('#province').select2();
+  $('#imageModal').modal();
+
+
+  $('.idModal').on('click',function(){
+    $('.imagepreview').attr('src', $(this).data('path'));
+    $('#imageModal').modal('open');
+  });
 });

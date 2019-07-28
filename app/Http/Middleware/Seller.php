@@ -19,6 +19,6 @@ class Seller
           return $next($request);
       }
 
-      return redirect('/')->with('error', 'You have not admin access.');
+      return redirect('/')->with('error', 'You do not have seller access.');
     }
 }

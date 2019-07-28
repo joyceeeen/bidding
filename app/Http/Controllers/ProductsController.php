@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Products;
 use Illuminate\Http\Request;
 use Vinkla\Hashids\Facades\Hashids;
-
+use App\ProductCategory;
 class ProductsController extends Controller
 {
     /**
@@ -15,7 +15,14 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-      $products = Products::all();
+      $products = null;
+      if($request->code){
+        $category = Hashids::decode($request->code)[0];
+        $categories = ProductCategory::where('category_id',$category)->groupBy('product_id')->pluck('product_id');
+        $products = Products::whereIn('id',$categories)->get();
+      }else{
+        $products = Products::all();
+      }
 
       return view('products.products',compact('products'));
 

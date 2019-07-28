@@ -717,3 +717,15 @@ color: #999;
     right: 15%;
     top: 25%;
   }
+.zoom img{
+  height: 380px;
+  width:100%;
+  object-fit: cover;
+}
+.open{
+  background: #000000bd;
+z-index: 22222222222222 !important;
+display: block;
+opacity: 1;
+top: 0% !important;
+}

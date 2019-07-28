@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function(){
-  //  return redirect()->route('product.index');
-
-  return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('/products', function () {
   return view('products');
@@ -23,17 +19,12 @@ Route::get('/products', function () {
 
 Route::get('/seller/{id}', 'UserController@show')->name('seller.profile');
 
-Route::get('/products/specific', function () {
-  return view('products/specific');
+Route::middleware(['auth','admin'])->group(function(){
+  Route::get('/admin', 'UserController@admin');
+  Route::post('/accept', 'UserController@accept')->name('accept');
+  Route::post('/decline', 'UserController@decline')->name('decline');
+
 });
-
-
-
-Route::get('/admin', function () {
-  return view('admin');
-});
-
-
 
 Auth::routes();
 

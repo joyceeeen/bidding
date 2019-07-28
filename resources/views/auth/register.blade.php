@@ -26,7 +26,7 @@
                           <div class="col">
                               <!-- First name -->
                               <div class="md-form">
-                                  <input type="text" id="materialRegisterFormFirstName" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="name" autofocus>
+                                  <input type="text" id="materialRegisterFormFirstName" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="off" autofocus>
                                   <label for="materialRegisterFormFirstName">First name</label>
                                   @error('firstname')
                                       <span class="invalid-feedback" role="alert">
@@ -38,7 +38,7 @@
                           <div class="col">
                               <!-- Last name -->
                               <div class="md-form">
-                                  <input type="text" id="materialRegisterFormLastName" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus >
+                                  <input type="text" id="materialRegisterFormLastName" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="off" autofocus >
                                   <label for="materialRegisterFormLastName">Last name</label>
                                   @error('lastname')
                                       <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
 
                       <!-- E-mail -->
                       <div class="md-form mt-0">
-                          <input type="email" id="materialRegisterFormEmail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                          <input type="email" id="materialRegisterFormEmail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="off">
                           <label for="materialRegisterFormEmail">E-mail</label>
                           @error('email')
                               <span class="invalid-feedback" role="alert">
@@ -66,7 +66,7 @@
                       </div>
                       <!-- Password -->
                       <div class="md-form">
-                          <input type="password" id="materialRegisterFormPassword" aria-describedby="materialRegisterFormPasswordHelpBlock" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                          <input type="password" id="materialRegisterFormPassword" aria-describedby="materialRegisterFormPasswordHelpBlock" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="off">
                           <label for="materialRegisterFormPassword">Password</label>
                           <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                               At least 8 characters and 1 digit
@@ -80,7 +80,7 @@
 
                       <!-- Password -->
                       <div class="md-form">
-                          <input type="password" id="password-confirm" aria-describedby="materialRegisterFormPasswordHelpBlock" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                          <input type="password" id="password-confirm" aria-describedby="materialRegisterFormPasswordHelpBlock" class="form-control" name="password_confirmation" required autocomplete="off">
                           <label for="password-confirm">Confirm Password</label>
                       </div>
 

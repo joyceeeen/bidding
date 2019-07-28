@@ -25,6 +25,28 @@ class UserController extends Controller
     }
   }
 
+  public function admin(){
+    $users = User::where('is_seller',1)->where('is_confirmed',null)->with('ids')->get();
+    return view('admin',compact('users'));
+  }
+
+  public function accept(Request $request){
+    $id =  Hashids::decode($request->user)[0];
+    $user = User::find($id);
+    $user->is_confirmed = 1;
+    $user->save();
+
+    return redirect()->back();
+  }
+
+  public function decline(Request $request){
+    $id =  Hashids::decode($request->user)[0];
+    $user = User::find($id);
+    $user->is_confirmed = 0;
+    $user->save();
+
+    return redirect()->back();
+  }
   /**
   * Show the form for creating a new resource.
   *
@@ -83,7 +105,6 @@ class UserController extends Controller
   public function update(Request $request)
   {
     $user = auth()->user();
-    $user->mobile_number = $request->mobile_number;
     $user->is_seller = $request->is_seller;
 
     $id1_path = $request->file('id1_path');
