@@ -83,15 +83,27 @@ $(document).ready(function() {
       url:'/prediction',
       data: { market:randomMarket},
       headers: {
-           'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-       },
-       success:function(response){
-         var price = Number(response.class).toFixed(2);         // 1.00
-         $('.predictedPrice').html(" &#8369;"+ price + " ("+locations[randomMarket]+")");
-       },
-    })
-
-
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      },
+      success:function(response){
+        var price = Number(response.class).toFixed(2);         // 1.00
+        $('.predictedPrice').html(" &#8369;"+ price + " ("+locations[randomMarket]+")");
+      },
+    });
   }
+
+  $("#searchSubmit").on("submit", function(event){
+    event.stopPropagation();
+    event.preventDefault(); //prevent submission
+    let formData = $(this).serialize(); //outputs firstname=blah&lastname=moreblah
+    //
+    let fullUrl = $(location).attr("href");
+    let queryPart = fullUrl.split("?")[1]; //here you have country=usa&state=ny
+    //
+    let finalForm = fullUrl + "&"+ formData;  //country=usa&state=ny&firstname=blah
+    window.location.href = finalForm;
+
+    // submit here using 'finalForm' after your request endpoint
+  });
 
 });
