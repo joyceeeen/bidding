@@ -17,6 +17,8 @@ Route::get('/products', function () {
   return view('products');
 });
 
+
+Route::post('prediction','PredictionController@price');
 Route::get('/seller/{id}', 'UserController@show')->name('seller.profile');
 
 Route::middleware(['auth','admin'])->group(function(){

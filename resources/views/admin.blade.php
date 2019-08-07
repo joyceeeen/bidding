@@ -110,7 +110,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <img src="" class="imagepreview" style="width: 100%;" >
+        <center>
+        <img src="" class="imagepreview" style="width: 500px;" >
+      </center>
       </div>
       <div class="modal-footer">
 

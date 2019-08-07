@@ -51,8 +51,11 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-
-
+          <li class="nav-item">
+            <a class="nav-link">
+              Price of <b>Sugar</b>: <span class="predictedPrice"></span>
+            </a>
+          </li>
         </ul>
 
         <!-- Right -->
@@ -70,6 +73,7 @@
           </li>
           @endif
           @else
+
           <li class="nav-item nav-dropdown">
             <div class="dropdown" style="padding: 13px;margin-top:-3px;float:right;">
               <a href="#" onclick="return false;" role="button" data-toggle="dropdown" id="dropdownMenu1" data-target="#" style="float: left;    margin-top: 2px;" aria-expanded="true">

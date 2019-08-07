@@ -26,7 +26,7 @@ class UserController extends Controller
   }
 
   public function admin(){
-    $users = User::where('is_seller',1)->where('is_confirmed',null)->with('ids')->get();
+    $users = User::where('is_seller',1)->where('is_confirmed',0)->with('ids')->get();
     return view('admin',compact('users'));
   }
 
@@ -42,7 +42,7 @@ class UserController extends Controller
   public function decline(Request $request){
     $id =  Hashids::decode($request->user)[0];
     $user = User::find($id);
-    $user->is_confirmed = 0;
+    $user->is_confirmed = -1;
     $user->save();
 
     return redirect()->back();

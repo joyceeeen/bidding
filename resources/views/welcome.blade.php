@@ -16,6 +16,7 @@
                     <hr class="hr-light my-4 w-75">
                     <h4 class="subtext-header mt-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing
                         elit deleniti consequuntur nihil.</h4>
+              
                     <a href="#!" class="btn btn-rounded btn-outline-white">
                         <i class="fa fa-home"></i> Visit us
                     </a>

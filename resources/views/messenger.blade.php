@@ -16,7 +16,7 @@
       <div class="col-lg-7 pt-5">
         <center>
           <h1 class="font-weight-bold text-primary text-center" style="padding-top:120px;padding-left:10px;padding-right:10px;font-size:60px;">No Messages Yet</h1>
-          <h1 class="font-weight-bold text-primary text-center" style="padding-left:10px;padding-right:10px;font-size:40px;">Looks like no one has messages you yet.</h1>
+          <h1 class="font-weight-bold text-primary text-center" style="padding-left:10px;padding-right:10px;font-size:40px;">Looks like no one has message you yet.</h1>
         </center>
       </div>
     </div>
