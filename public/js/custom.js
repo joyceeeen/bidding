@@ -121,7 +121,12 @@ $(document).ready(function() {
     let fullUrl = $(location).attr("href");
     let queryPart = fullUrl.split("?")[1]; //here you have country=usa&state=ny
     //
-    let finalForm = fullUrl + "&"+ formData;  //country=usa&state=ny&firstname=blah
+    var finalForm = null;
+    if(queryPart){
+      finalForm = fullUrl + "&"+ formData;
+    }else{
+      finalForm = fullUrl + "?"+ formData;
+    }
     window.location.href = finalForm;
 
     // submit here using 'finalForm' after your request endpoint
