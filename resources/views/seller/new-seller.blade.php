@@ -9,11 +9,13 @@
           <div class="card">
 
             <h5 class="card-header success-color white-text text-center py-4">
-              <strong>We just need a little more information from you as a seller.</strong>
+              <strong>@if(auth()->user()->is_confirmed == -1) Oh no! Your application has been declined. <br> @endif
+                We just need a little more information from you as a seller.</strong>
             </h5>
 
             <!--Card content-->
             <div class="card-body px-lg-5 pt-3">
+
 
               <!-- Form -->
               <form class="text-center" style="color: #757575;" method="POST" action="{{ route('seller.update',0) }}" enctype="multipart/form-data">
@@ -24,7 +26,7 @@
 
                   <div class="col">
                     <!-- First name -->
-                
+
                     <div class="row">
                       <div class="col-lg-12">
                         <label for="phone_input" class="font-weight-bold text-primary">
@@ -107,7 +109,7 @@
       <center>
         <i class="far fa-id-card text-primary" style="text-align:center;font-size:4rem"></i>
       </center>
-    <p class="text-icon-seller">ID must show birthdate</p>
+      <p class="text-icon-seller">ID must show birthdate</p>
     </div>
     <div class="col-lg-4">
       <center>
@@ -118,4 +120,4 @@
   </div>
 </div>
 
-  @endsection
+@endsection

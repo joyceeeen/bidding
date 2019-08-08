@@ -12,12 +12,11 @@
             <div class="row wow fadeIn">
                 <!--Grid column-->
                 <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
-                    <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">Creative Agency</h3>
+                    <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">WATSAP</h3>
                     <hr class="hr-light my-4 w-75">
-                    <h4 class="subtext-header mt-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit deleniti consequuntur nihil.</h4>
-              
-                    <a href="#!" class="btn btn-rounded btn-outline-white">
+                    <h4 class="subtext-header mt-2 mb-4">WEB APPLICATION TRADING SYSTEM FOR AGRICULTURAL PRODUCT</h4>
+
+                    <a href="https://www.facebook.com/watsapinfocus" class="btn btn-rounded btn-outline-white" target="_blank">
                         <i class="fa fa-home"></i> Visit us
                     </a>
                 </div>
@@ -49,9 +48,6 @@
           <!-- Section heading -->
           <h2 class="h1-responsive font-weight-bold text-center my-5">Categories</h2>
           <!-- Section description -->
-          <p class="grey-text text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas
-            nostrum quisquam eum porro a pariatur veniam.</p>
 
           <!-- Grid row -->
           <div class="row">

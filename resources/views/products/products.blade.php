@@ -18,18 +18,7 @@
         alt="First slide">
         <div class="mask rgba-black-light"></div>
       </div>
-      <div class="carousel-caption">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-6 col-lg-7 text-white hs-item">
-              <span>New Arrivals</span>
-              <h2>Mangoes</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-              <a href="#" class="btn btn-success">DISCOVER</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
     <div class="carousel-item">
       <!--Mask color-->
@@ -38,19 +27,7 @@
         alt="Second slide">
         <div class="mask rgba-black-strong"></div>
       </div>
-      <div class="carousel-caption">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-6 col-lg-7 text-white hs-item">
-              <span>New Arrivals</span>
-              <h2>Mangoes</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-              <a href="#" class="btn btn-success">DISCOVER</a>
 
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="carousel-item">
       <!--Mask color-->
@@ -59,18 +36,7 @@
         alt="Third slide">
         <div class="mask rgba-black-slight"></div>
       </div>
-      <div class="carousel-caption">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-6 col-lg-7 text-white hs-item">
-              <span>New Arrivals</span>
-              <h2>Mangoes</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-              <a href="#" class="btn btn-success">DISCOVER</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
   <!--/.Slides-->

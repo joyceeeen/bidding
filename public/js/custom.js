@@ -92,6 +92,27 @@ $(document).ready(function() {
     });
   }
 
+  $("#predictBtn").on('click',function(){
+
+    var month = $(".month-predict").val();
+    var market = $(".province-predict").val();
+    var result = $(".result-predict");
+    console.log(market);
+    $.ajax({
+      type:'post',
+      url:'/prediction',
+      data: { market: market, month: month },
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      },
+      success:function(response){
+        var price = Number(response.class).toFixed(2);         // 1.00
+        result.html(" &#8369;"+ price);
+      },
+    });
+
+  });
+
   $("#searchSubmit").on("submit", function(event){
     event.stopPropagation();
     event.preventDefault(); //prevent submission

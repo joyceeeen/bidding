@@ -12,11 +12,11 @@
             <div class="row wow fadeIn">
                 <!--Grid column-->
                 <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
-                    <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">Creative Agency</h3>
+                    <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">WATSAP</h3>
                     <hr class="hr-light my-4 w-75">
-                    <h4 class="subtext-header mt-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit deleniti consequuntur nihil.</h4>
-                    <a href="#!" class="btn btn-rounded btn-outline-white">
+                    <h4 class="subtext-header mt-2 mb-4">WEB APPLICATION TRADING SYSTEM FOR AGRICULTURAL PRODUCT</h4>
+
+                    <a href="https://www.facebook.com/watsapinfocus" class="btn btn-rounded btn-outline-white" target="_blank">
                         <i class="fa fa-home"></i> Visit us
                     </a>
                 </div>
@@ -47,25 +47,21 @@
 
           <!-- Section heading -->
           <h2 class="h1-responsive font-weight-bold text-center my-5">Categories</h2>
-          <!-- Section description -->
-          <p class="grey-text text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas
-            nostrum quisquam eum porro a pariatur veniam.</p>
 
           <!-- Grid row -->
           <div class="row">
 
             <!-- Grid column -->
-            @foreach($categories as $category)
             <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
               <!-- Collection card -->
               <div class="card collection-card z-depth-1-half">
                 <!-- Card image -->
                 <div class="view zoom">
-                  <img src="{{asset($category->thumbnail)}}" class="img-fluid" alt="">
+                  <img src="images/fruits/portrait/5.jpg" class="img-fluid"
+                    alt="">
                   <div class="stripe dark">
-                    <a href="{{route('product.index',['category'=>$category->category_name,'code'=>$category->code])}}">
-                      <p>{{$category->category_name}}
+                    <a>
+                      <p>Cherries
                         <i class="fas fa-angle-right"></i>
                       </p>
                     </a>
@@ -75,8 +71,73 @@
               </div>
               <!-- Collection card -->
             </div>
-            @endforeach
+            <!-- Grid column -->
 
+            <!-- Grid column -->
+            <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+              <!-- Collection card -->
+              <div class="card collection-card z-depth-1-half">
+                <!-- Card image -->
+                <div class="view zoom">
+                  <img src="images/fruits/portrait/2.jpg" class="img-fluid"
+                    alt="">
+                  <div class="stripe light">
+                    <a>
+                      <p>Fruits
+                        <i class="fas fa-angle-right"></i>
+                      </p>
+                    </a>
+                  </div>
+                </div>
+                <!-- Card image -->
+              </div>
+              <!-- Collection card -->
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-lg-3 col-md-6 mb-md-0 mb-4">
+              <!-- Collection card -->
+              <div class="card collection-card z-depth-1-half">
+                <!-- Card image -->
+                <div class="view zoom">
+                  <img src="images/fruits/portrait/3.jpg" class="img-fluid"
+                    alt="">
+                  <div class="stripe dark">
+                    <a>
+                      <p>Wholesale
+                        <i class="fas fa-angle-right"></i>
+                      </p>
+                    </a>
+                  </div>
+                </div>
+                <!-- Card image -->
+              </div>
+              <!-- Collection card -->
+            </div>
+            <!-- Grid column -->
+
+            <!-- Fourth column -->
+            <div class="col-lg-3 col-md-6">
+              <!-- Collection card -->
+              <div class="card collection-card z-depth-1-half">
+                <!-- Card image -->
+                <div class="view zoom">
+                  <img src="images/fruits/portrait/4.jpg" class="img-fluid"
+                    alt="">
+                  <div class="stripe light">
+                    <a>
+                      <p>Crops
+                        <i class="fas fa-angle-right"></i>
+                      </p>
+                    </a>
+                  </div>
+                </div>
+                <!-- Card image -->
+              </div>
+              <!-- Collection card -->
+            </div>
+            <!-- Fourth column -->
 
           </div>
           <!-- Grid row -->

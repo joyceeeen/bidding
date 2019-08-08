@@ -5,7 +5,8 @@
   <div class="row">
     <div class="col-lg-12">
       <center>
-        @if(auth()->user()->is_confirmed == 1)
+      
+        @if(auth()->user()->is_confirmed != 0)
         <div class="col-lg-6">
           <!-- Material form register -->
 
@@ -172,7 +173,7 @@
 
 </center>
 </div>
-@elseif(auth()->user()->is_confirmed == 0)
+@else
 <div class="row pt-5">
   <div class="col-lg-5 pt-5">
     <img src="/images/card.png" alt="" style="width:100%;">
@@ -184,18 +185,7 @@
     </center>
   </div>
 </div>
-@else
-<div class="row pt-5">
-  <div class="col-lg-5 pt-5">
-    <img src="/images/card.png" alt="" style="width:100%;">
 
-  </div>
-  <div class="col-lg-7 pt-5">
-    <center>
-      <h1 class="font-weight-bold text-primary text-center" style="padding-top:120px;padding-left:10px;padding-right:10px;font-size:60px;">Oh no! It seems like your application has been declined!</h1>
-    </center>
-  </div>
-</div>
 @endif
 
 </div>

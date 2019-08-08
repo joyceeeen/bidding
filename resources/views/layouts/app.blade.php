@@ -32,7 +32,7 @@
 
         <!-- Brand -->
         <a class="navbar-brand waves-effect" href="/">
-          <strong>Crops Bidding System</strong>
+          <strong>WATSAP</strong>
         </a>
 
         <!-- Collapse -->
@@ -111,7 +111,7 @@
           </li>
           <li class="nav-item">
 
-            @if(Auth::user()->is_seller)
+            @if(Auth::user()->is_seller && Auth::user()->is_confirmed > 0)
             <a class="nav-link" href="{{ route('product.create') }}">Add Product</a>
             @else
             <a class="nav-link" href="{{ route('seller.index') }}">Become A Seller</a>
@@ -165,45 +165,6 @@
 
 <!--Footer-->
 <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-
-  <hr class="my-4">
-
-  <!-- Social icons -->
-  <div class="pb-4">
-    <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-      <i class="fab fa-facebook-f mr-3"></i>
-    </a>
-
-    <a href="https://twitter.com/MDBootstrap" target="_blank">
-      <i class="fab fa-twitter mr-3"></i>
-    </a>
-
-    <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-      <i class="fab fa-youtube mr-3"></i>
-    </a>
-
-    <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-      <i class="fab fa-google-plus-g mr-3"></i>
-    </a>
-
-    <a href="https://dribbble.com/mdbootstrap" target="_blank">
-      <i class="fab fa-dribbble mr-3"></i>
-    </a>
-
-    <a href="https://pinterest.com/mdbootstrap" target="_blank">
-      <i class="fab fa-pinterest mr-3"></i>
-    </a>
-
-    <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-      <i class="fab fa-github mr-3"></i>
-    </a>
-
-    <a href="http://codepen.io/mdbootstrap/" target="_blank">
-      <i class="fab fa-codepen mr-3"></i>
-    </a>
-  </div>
-  <!-- Social icons -->
 
   <!--Copyright-->
   <div class="footer-copyright py-3">

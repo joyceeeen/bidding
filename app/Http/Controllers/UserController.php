@@ -18,7 +18,7 @@ class UserController extends Controller
   */
   public function index()
   {
-    if(auth()->check() && auth()->user()->is_seller){
+    if(auth()->check() && (auth()->user()->is_seller && auth()->user()->is_confirmed > 0)){
       return redirect()->route('product.index');
     }else{
       return view("seller.new-seller");

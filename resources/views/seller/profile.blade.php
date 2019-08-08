@@ -71,7 +71,7 @@
                 </p>
                 <!-- Card footer -->
                 <div class="card-footer px-1">
-                  @if($product->ends_on >= Carbon\Carbon::now() && $product->lastBid)
+                  @if($product->ends_on <= Carbon\Carbon::now() && $product->lastBid)
                   <p>
                     <span class="float-left font-weight-bold">
                       <strong>Last Price: PHP {{$product->lastBid == null ? $product->base_price : $product->lastBid->amount}}</strong>
@@ -80,7 +80,7 @@
                   <p class="mb-0">
                     <span class="badge green mr-1">Sold</span>
                   </p>
-                  @elseif($product->ends_on >= Carbon\Carbon::now() && !$product->lastBid)
+                  @elseif($product->ends_on <= Carbon\Carbon::now() && !$product->lastBid)
                   <p>
                     <span class="float-left font-weight-bold">
                       <strong>Base Price: PHP {{$product->lastBid == null ? $product->base_price : $product->lastBid->amount}}</strong>

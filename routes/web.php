@@ -16,7 +16,9 @@ Route::get('/', 'HomeController@index');
 Route::get('/products', function () {
   return view('products');
 });
-
+Route::get('/prediction', function () {
+  return view('prediction');
+});
 
 Route::post('prediction','PredictionController@price');
 Route::get('/seller/{id}', 'UserController@show')->name('seller.profile');
