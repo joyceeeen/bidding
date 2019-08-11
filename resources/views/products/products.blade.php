@@ -154,23 +154,13 @@
                     </strong>
                   </h4>
                   <!--Rating-->
-                  <ul class="rating">
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="far fa-star"></i>
-                    </li>
-                  </ul>
+                  <div class="rating" data-rating="{{$product->ratings->average('rate')}}">
+                    <span class="far fa-star" data-score='1'></span>
+                    <span class="far fa-star" data-score='2'></span>
+                    <span class="far fa-star" data-score='3'></span>
+                    <span class="far fa-star" data-score='4'></span>
+                    <span class="far fa-star" data-score='5'></span>
+                  </div>
                   <!-- Description -->
                   <p class="card-text">{{$product->description}}
                   </p>

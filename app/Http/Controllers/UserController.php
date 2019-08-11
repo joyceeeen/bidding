@@ -78,7 +78,7 @@ class UserController extends Controller
   public function show($id)
   {
     $id = Hashids::decode($id)[0];
-    $user = User::whereId($id)->where('is_seller',1)->with('products.lastBid')->first();
+    $user = User::whereId($id)->where('is_seller',1)->with('products.lastBid','allRatings')->first();
 
     return view('seller.profile', compact('user'));
 
@@ -131,7 +131,7 @@ class UserController extends Controller
       $user = auth()->user();
       $user->is_confirmed = 0;
       $user->save();
-      
+
       $user_ids = IdentificationPhotos::find($request->existingId);
     }else{
       $user_ids = new IdentificationPhotos();

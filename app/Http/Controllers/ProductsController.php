@@ -89,7 +89,8 @@ class ProductsController extends Controller
     public function show(Request $request)
     {
       $productId = Hashids::decode($request->product)[0];
-      $product = Products::whereId($productId)->with(['lastBid','mainCategory.description','thumbnail','bids.user'])->first();
+      $product = Products::whereId($productId)->with(['lastBid','mainCategory.description','thumbnail','bids.user','ratings'])->first();
+
       return View('products.product',compact('product'));
 
     }
@@ -138,7 +139,6 @@ class ProductsController extends Controller
      public function myProducts(){
 
        $products = Products::where('user_id', auth()->user()->id)->with(['lastBid','mainCategory.description','thumbnail'])->get();
-
        return view('products.my-products',compact('products'));
      }
 }

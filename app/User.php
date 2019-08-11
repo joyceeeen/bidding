@@ -58,4 +58,8 @@ class User extends Authenticatable
   public function products(){
     return $this->hasMany('App\Products','user_id','id');
   }
+
+  public function allRatings(){
+    return $this->hasManyThrough('App\Ratings','App\Products','user_id','product_id');
+  }
 }

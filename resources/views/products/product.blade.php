@@ -58,23 +58,14 @@
 
           <p class="lead font-weight-bold mb-0">{{$product->title}}</p>
 
-          <ul class="rating">
-            <li>
-              <i class="fas fa-star"></i>
-            </li>
-            <li>
-              <i class="fas fa-star"></i>
-            </li>
-            <li>
-              <i class="fas fa-star"></i>
-            </li>
-            <li>
-              <i class="fas fa-star"></i>
-            </li>
-            <li>
-              <i class="far fa-star"></i>
-            </li>
-          </ul>
+
+          <div class="rating" data-rating="{{$product->ratings->average('rate')}}">
+            <span class="far fa-star" data-score='1'></span>
+            <span class="far fa-star" data-score='2'></span>
+            <span class="far fa-star" data-score='3'></span>
+            <span class="far fa-star" data-score='4'></span>
+            <span class="far fa-star" data-score='5'></span>
+          </div>
 
 
 
@@ -89,23 +80,23 @@
           @if(auth()->check() && ($product->user_id == auth()->user()->id))
 
           @else
-            @if($product->ends_on >= Carbon\Carbon::now())
-            <form action="{{route('orders.store',['product'=>$product->hash])}}" method="post" class="d-flex justify-content-left">
-              @csrf
-              <!-- Default input -->
-              <input type="hidden" name="lastBid" value="{{$product->lastBid != null ? $product->lastBid->amount : $product->base_price }}"/>
-              <input type="number" min="{{$product->lastBid != null ? $product->lastBid->amount + 1 : $product->base_price + 1 }}" name="bid" autocomplete="off" class="form-control" style="width: 100px">
-              <button class="btn btn-success btn-md my-0 p" type="submit"> Bid
-                <i class="fas fa-gavel ml-1"></i>
-              </button>
-            </form>
-            <br>
-            <p class="lead font-weight-bold">
-              Bidding will end at {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}
-            </p>
-            @else
-            <p class="mb-0 font-weight-bold">Bidding ended last {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}</p>
-            @endif
+          @if($product->ends_on >= Carbon\Carbon::now())
+          <form action="{{route('orders.store',['product'=>$product->hash])}}" method="post" class="d-flex justify-content-left">
+            @csrf
+            <!-- Default input -->
+            <input type="hidden" name="lastBid" value="{{$product->lastBid != null ? $product->lastBid->amount : $product->base_price }}"/>
+            <input type="number" min="{{$product->lastBid != null ? $product->lastBid->amount + 1 : $product->base_price + 1 }}" name="bid" autocomplete="off" class="form-control" style="width: 100px">
+            <button class="btn btn-success btn-md my-0 p" type="submit"> Bid
+              <i class="fas fa-gavel ml-1"></i>
+            </button>
+          </form>
+          <br>
+          <p class="lead font-weight-bold">
+            Bidding will end at {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}
+          </p>
+          @else
+          <p class="mb-0 font-weight-bold">Bidding ended last {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}</p>
+          @endif
           @endif
 
           <hr>
@@ -116,7 +107,7 @@
             <a href="{{route('messages.create',['receiver'=>$product->seller->hash,'first'=>true])}}"><i class="fa fa-envelope text-primary" style="font-size:2em;"></i></a>
           </p>
           <p class="lead font-weight-bold">Being Sold By:</p>
-            <h4 class="pb-0 mb-0 font-weight-bold text-primary">{{$product->seller->name}}'s Shop</h4>
+          <h4 class="pb-0 mb-0 font-weight-bold text-primary">{{$product->seller->name}}'s Shop</h4>
           <p>
             <a href="{{route('seller.profile',['id'=>$product->seller->hash])}}">View Profile</a>
           </p>
@@ -130,14 +121,45 @@
     </div>
 
     <!--Grid row-->
+      <h2 class="font-weight-bold" style="text-align:left">Reviews</h2>
+      <hr>
+      <div class="reviews">
+        @foreach($product->ratings as $rate)
+        <div class="row review-item">
+          <div class="col-md-3 text-center">
+            <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+            <div class="caption">
+              <small>by <a href="#joe">{{$rate->user->name}}</a></small>
+            </div>
+
+          </div>
+          <div class="col-md-9">
+            <h4>{{$rate->title}}</h4>
+              <div class="rating" data-rating="{{$rate->rate}}">
+                <span class="far fa-star" data-score='1'></span>
+                <span class="far fa-star" data-score='2'></span>
+                <span class="far fa-star" data-score='3'></span>
+                <span class="far fa-star" data-score='4'></span>
+                <span class="far fa-star" data-score='5'></span>
+              </div>
+            <p class="review-text">
+              {{$rate->comment}}
+            </p>
+
+            <small class="review-date">{{\Carbon\Carbon::parse($rate->created_at)->format('F d, Y')}}</small>
+            <hr>
+          </div>
+        </div>
+        @endforeach
+      </div>
 
 
 
     @if(auth()->check() && ($product->user_id == auth()->user()->id))
-    <hr>
-    <h3>Bidding History</h3>
+    <h2 class="font-weight-bold" style="text-align:left">Bidding History</h2>
+
     @if($product->bids->isEmpty())
-      No Bids Yet
+    No Bids Yet
     @else
     <table class="table table-hover">
       <thead>

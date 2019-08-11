@@ -49,23 +49,13 @@
                   </strong>
                 </h4>
                 <!--Rating-->
-                <ul class="rating">
-                  <li>
-                    <i class="fas fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="far fa-star"></i>
-                  </li>
-                </ul>
+                <div class="rating" data-rating="{{$product->ratings->average('rate')}}">
+                  <span class="far fa-star" data-score='1'></span>
+                  <span class="far fa-star" data-score='2'></span>
+                  <span class="far fa-star" data-score='3'></span>
+                  <span class="far fa-star" data-score='4'></span>
+                  <span class="far fa-star" data-score='5'></span>
+                </div>
                 <!-- Description -->
                 <p class="card-text">{{$product->description}}
                 </p>
@@ -109,76 +99,36 @@
           <div class="col-lg-12">
             <h2 class="font-weight-bold" style="text-align:left">Reviews</h2>
             <hr>
+            @foreach($user->allRatings as $rating)
             <div class="reviews">
               <div class="row review-item">
                 <div class="col-md-3 text-center">
                   <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
                   <div class="caption">
-                    <small>by <a href="#joe">Joe</a></small>
+                    <small>by <a href="#joe">{{$rating->user->name}}</a></small>
                   </div>
 
                 </div>
                 <div class="col-md-9">
-                  <h4>My awesome review</h4>
-                  <ul class="rating">
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="far fa-star"></i>
-                    </li>
-                  </ul>
-                  <p class="review-text">My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. </p>
-
-                  <small class="review-date">March 26, 2017</small>
-                  <hr>
-                </div>
-              </div>
-            </div>
-            <div class="reviews">
-              <div class="row review-item">
-                <div class="col-md-3 text-center">
-                  <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-                  <div class="caption">
-                    <small>by <a href="#joe">Joe</a></small>
+                  <b><a href="{{route('product.show', ['product'=>$rating->product->hash])}}">{{$rating->product->title}}</a></b>
+                  <h4>  {{$rating->title}}</h4>
+                  <div class="rating" data-rating="{{$rating->rate}}">
+                    <span class="far fa-star" data-score='1'></span>
+                    <span class="far fa-star" data-score='2'></span>
+                    <span class="far fa-star" data-score='3'></span>
+                    <span class="far fa-star" data-score='4'></span>
+                    <span class="far fa-star" data-score='5'></span>
                   </div>
+                  <p class="review-text">
+                    {{$rating->comment}}
+                   </p>
 
-                </div>
-                <div class="col-md-9">
-                  <h4>My awesome review</h4>
-                  <ul class="rating">
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i class="far fa-star"></i>
-                    </li>
-                  </ul>
-                  <p class="review-text">My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. </p>
-
-                  <small class="review-date">March 26, 2017</small>
+                  <small class="review-date">{{\Carbon\Carbon::parse($rating->created_at)->format('F d, Y')}}</small>
                   <hr>
                 </div>
               </div>
             </div>
+            @endforeach
           </div>
         </div>
 
