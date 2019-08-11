@@ -78,7 +78,13 @@
             <span>PHP {{ $product->lastBid != null ? $product->lastBid->amount : $product->base_price }}</span>
           </p>
           @if(auth()->check() && ($product->user_id == auth()->user()->id))
-
+          @if($product->ends_on >= Carbon\Carbon::now())
+          <p class="lead font-weight-bold">
+            Bidding will end at {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}
+          </p>
+          @else
+          <p class="mb-0 font-weight-bold">Bidding ended last {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}</p>
+          @endif
           @else
           @if($product->ends_on >= Carbon\Carbon::now())
           <form action="{{route('orders.store',['product'=>$product->hash])}}" method="post" class="d-flex justify-content-left">
