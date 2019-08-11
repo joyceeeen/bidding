@@ -50,18 +50,17 @@
 
           <!-- Grid row -->
           <div class="row">
+            @foreach($categories as $category)
 
-            <!-- Grid column -->
             <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
               <!-- Collection card -->
               <div class="card collection-card z-depth-1-half">
                 <!-- Card image -->
                 <div class="view zoom">
-                  <img src="images/fruits/portrait/5.jpg" class="img-fluid"
-                    alt="">
+                  <img src="{{asset($category->thumbnail)}}" class="img-fluid" alt="">
                   <div class="stripe dark">
-                    <a>
-                      <p>Cherries
+                    <a href="{{route('product.index',['category'=>$category->category_name,'code'=>$category->code])}}">
+                      <p>{{$category->category_name}}
                         <i class="fas fa-angle-right"></i>
                       </p>
                     </a>
@@ -71,73 +70,9 @@
               </div>
               <!-- Collection card -->
             </div>
-            <!-- Grid column -->
+            @endforeach
 
-            <!-- Grid column -->
-            <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
-              <!-- Collection card -->
-              <div class="card collection-card z-depth-1-half">
-                <!-- Card image -->
-                <div class="view zoom">
-                  <img src="images/fruits/portrait/2.jpg" class="img-fluid"
-                    alt="">
-                  <div class="stripe light">
-                    <a>
-                      <p>Fruits
-                        <i class="fas fa-angle-right"></i>
-                      </p>
-                    </a>
-                  </div>
-                </div>
-                <!-- Card image -->
-              </div>
-              <!-- Collection card -->
-            </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
-            <div class="col-lg-3 col-md-6 mb-md-0 mb-4">
-              <!-- Collection card -->
-              <div class="card collection-card z-depth-1-half">
-                <!-- Card image -->
-                <div class="view zoom">
-                  <img src="images/fruits/portrait/3.jpg" class="img-fluid"
-                    alt="">
-                  <div class="stripe dark">
-                    <a>
-                      <p>Wholesale
-                        <i class="fas fa-angle-right"></i>
-                      </p>
-                    </a>
-                  </div>
-                </div>
-                <!-- Card image -->
-              </div>
-              <!-- Collection card -->
-            </div>
-            <!-- Grid column -->
-
-            <!-- Fourth column -->
-            <div class="col-lg-3 col-md-6">
-              <!-- Collection card -->
-              <div class="card collection-card z-depth-1-half">
-                <!-- Card image -->
-                <div class="view zoom">
-                  <img src="images/fruits/portrait/4.jpg" class="img-fluid"
-                    alt="">
-                  <div class="stripe light">
-                    <a>
-                      <p>Crops
-                        <i class="fas fa-angle-right"></i>
-                      </p>
-                    </a>
-                  </div>
-                </div>
-                <!-- Card image -->
-              </div>
-              <!-- Collection card -->
-            </div>
-            <!-- Fourth column -->
 
           </div>
           <!-- Grid row -->

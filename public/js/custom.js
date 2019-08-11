@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   Dropzone.options.myAwesomeDropzone = {
     paramName: "file", // The name that will be used to transfer the file
-    acceptedFiles: ['image/*']
+    acceptedFiles: 'image/*'
   };
 
 
@@ -74,6 +74,13 @@ $(document).ready(function() {
     $('#imageModal').modal('open');
   });
 
+  $('#canReview').modal();
+
+  $('.can-review').on('click',function(){
+    $('#canReview').modal('open');
+  });
+
+
   if($('.predictedPrice')){
     var locations = ['Batangas City Public Market Batangas','Carbon Public Market Cebu City','Commonwealth Market Quezon City','Mandaluyong Public Market','Mega Q-Mart EDSA Cubao Quezon City','Munoz Public Market','Muntinlupa Market Muntinlupa City','Pasay Market Pasay City MM','Pasig City Mega Market' ,'Pasil Public Market Pasil Cebu City','Tandang Sora Public Market','Viajero Market   Pasig City MM','Zamboanga City Public Market Zambo Sur','New Dagonoy Public Market','Marikina Market Zone MM','Kalibo Public Market Aklan','Lucena City Public Market Quezon','San Jose Trade Town Antique','Sariaya Public Market Quezon','Siniloan Public Market Laguna','Baler Public Market Aurora'];
     var randomMarket = Math.floor(Math.random()*locations.length);
@@ -97,7 +104,6 @@ $(document).ready(function() {
     var month = $(".month-predict").val();
     var market = $(".province-predict").val();
     var result = $(".result-predict");
-    console.log(market);
     $.ajax({
       type:'post',
       url:'/prediction',
@@ -108,6 +114,28 @@ $(document).ready(function() {
       success:function(response){
         var price = Number(response.class).toFixed(2);         // 1.00
         result.html(" &#8369;"+ price);
+      },
+    });
+
+  });
+
+
+
+  $("#peakBtn").on('click',function(){
+
+    var month = $(".month-select").val();
+    var item = $(".item-select").val();
+    var result = $(".peak-result");
+    $.ajax({
+      type:'get',
+      url:'/prediction-peak',
+      data: { item: item, month: month },
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      },
+      success:function(response){
+        var is_peak = response.is_peak_season;        // 1.00
+        result.html(is_peak);
       },
     });
 

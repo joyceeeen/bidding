@@ -126,8 +126,16 @@ class UserController extends Controller
 
     $thumbnailImage1->save($filename1);
     $thumbnailImage2->save($filename2);
-
-    $user_ids = new IdentificationPhotos();
+    $user_ids = null;
+    if($request->existingId){
+      $user = auth()->user();
+      $user->is_confirmed = 0;
+      $user->save();
+      
+      $user_ids = IdentificationPhotos::find($request->existingId);
+    }else{
+      $user_ids = new IdentificationPhotos();
+    }
 
     $user_ids->id1_path = $filename1;
     $user_ids->id2_path = $filename2;
@@ -135,8 +143,6 @@ class UserController extends Controller
 
     $user_ids->save();
     $user->save();
-
-
 
     return redirect()->route('product.create');
   }

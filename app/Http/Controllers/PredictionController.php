@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use Carbon\Carbon;
+use App\PeakSeason;
 class PredictionController extends Controller
 {
 
@@ -31,5 +32,14 @@ class PredictionController extends Controller
     return response($responseJSON, 200);
   }
 
-
+  public function peak(Request $request){
+    $item = mb_strtolower($request->item);
+    $month = mb_strtolower($request->month);
+    $months = PeakSeason::where('item',$item)->pluck('month');
+    if($months->contains($month)){
+      return response(['is_peak_season'=>'Peak Season'], 200);
+    }else{
+      return response(['is_peak_season'=>'Off Season'], 200);
+    }
+  }
 }

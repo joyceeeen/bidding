@@ -17,6 +17,7 @@ class CreateRatingsTable extends Migration
              $table->bigIncrements('id');
              $table->unsignedBigInteger('product_id');
              $table->unsignedBigInteger('user_id');
+             $table->string('title');
              $table->integer('rate');
              $table->text('comment');
              $table->timestamps();

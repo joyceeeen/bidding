@@ -16,12 +16,15 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>Order #</th>
 
           <th>Item</th>
           <th>Amount</th>
           <th>Address</th>
           <th>Date of Bid</th>
           <th>Date of Purchased</th>
+          <th>Status</th>
+
           <th></th>
         </tr>
       </thead>
@@ -30,12 +33,17 @@
 
         @foreach($orders as $order)
         <tr>
+          <td>{{$order->finalOrder->ref}}</td>
           <td>{{$order->product->title}}</td>
           <td>{{$order->amount}}</td>
           <td>{{$order->product->location}}</td>
           <td>{{$order->created_at}}</td>
           <td>{{Carbon\Carbon::parse($order->product->ends_on)->format("Y-m-d")}}</td>
-          <td><a class="btn btn-primary btn-sm" href="{{route('order.status',['id'=>$order->product->hash])}}">Check Status</a></td>
+          <th>{{$order->finalOrder->status->status}}</th>
+
+          <td>
+            <a class="btn btn-primary btn-sm" href="{{route('order.status',['id'=>$order->product->hash])}}">View More</a>
+          </td>
         </tr>
         @endforeach
 

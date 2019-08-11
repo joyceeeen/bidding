@@ -6,6 +6,7 @@ use App\Products;
 use Illuminate\Http\Request;
 use Vinkla\Hashids\Facades\Hashids;
 use App\ProductCategory;
+use App\Status;
 class ProductsController extends Controller
 {
     /**
@@ -22,7 +23,7 @@ class ProductsController extends Controller
         if($request->product_name){
           $products = Products::whereIn('id',$categories)->where('title','like','%'.$request->product_name.'%')->get();
         }else{
-        
+
           $products = Products::whereIn('id',$categories)->get();
         }
       }else{
@@ -36,6 +37,12 @@ class ProductsController extends Controller
 
     }
 
+    public function sold(Request $request){
+      $user = auth()->user();
+      $products = Products::where('user_id',$user->id)->whereHas('winner')->with(['winner.status','ratings'])->get();
+      $statuses = Status::get();
+      return view('seller.sold-products',compact('products','user','statuses'));
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SubCategoryTable::class);
         $this->call(StatusSeeder::class);
         $this->call(AdminSeeder::class);
-
+        $this->call(ForecastingDataSeed::class);
     }
 }

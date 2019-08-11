@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ratings;
 use Illuminate\Http\Request;
-
+use App\OrderStatus;
 class RatingsController extends Controller
 {
     /**
@@ -35,7 +35,21 @@ class RatingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = auth()->user();
+        $ratings = new Ratings();
+        $ratings->user_id = $user->id;
+        $ratings->product_id = $request->product_id;
+        $ratings->title = $request->title;
+        $ratings->rate = $request->star;
+        $ratings->comment = $request->description;
+        $ratings->save();
+
+        $order = OrderStatus::find($request->order_id);
+        $order->status_id = 5;
+        $order->save();
+
+        return redirect()->back()->with('success','Item has been successfully rated!');
+
     }
 
     /**

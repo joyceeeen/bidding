@@ -35,6 +35,10 @@ class Products extends Model
     return $this->hasMany('App\Orders','product_id');
   }
 
+  public function ratings(){
+    return $this->hasMany('App\Ratings','product_id');
+  }
+
   public function mainCategory(){
     return $this->hasOne('App\ProductCategory','product_id')->oldest();
   }
@@ -45,5 +49,9 @@ class Products extends Model
 
   public function lastBid(){
     return $this->hasOne('App\Orders','product_id')->latest();
+  }
+
+  public function winner(){
+    return $this->hasOneThrough('App\OrderStatus','App\Orders','product_id','order_id');
   }
 }

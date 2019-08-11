@@ -17,4 +17,9 @@ class Orders extends Model
   public function product(){
     return $this->hasOne('App\Products','id','product_id');
   }
+
+  public function finalOrder(){
+    return $this->hasOne('App\OrderStatus','order_id','id');
+  }
+
 }

@@ -26,7 +26,9 @@
 
                   <div class="col">
                     <!-- First name -->
-
+                    @if(auth()->user()->is_confirmed == -1)
+                    <input type="hidden" name="existingId" value="{{auth()->user()->ids->id}}" />
+                    @endif
                     <div class="row">
                       <div class="col-lg-12">
                         <label for="phone_input" class="font-weight-bold text-primary">

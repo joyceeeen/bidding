@@ -128,6 +128,8 @@
               @if(auth()->check())
               @if(auth()->user()->is_seller)
               <a class="dropdown-item" href="{{route('seller.profile',['id'=>auth()->user()->hash])}}" >My Products</a>
+              <a class="dropdown-item" href="{{route('sold.products')}}" >Sold Products</a>
+
               @endif
 
               <a class="dropdown-item" href="/my-bids">My Bids</a>

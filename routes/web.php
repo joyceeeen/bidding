@@ -21,15 +21,17 @@ Route::get('/prediction', function () {
 });
 
 Route::post('prediction','PredictionController@price');
+Route::get('prediction-peak','PredictionController@peak');
+
 Route::get('/seller/{id}', 'UserController@show')->name('seller.profile');
 
 Route::middleware(['auth','admin'])->group(function(){
   Route::get('/admin', 'UserController@admin');
   Route::post('/accept', 'UserController@accept')->name('accept');
   Route::post('/decline', 'UserController@decline')->name('decline');
-
 });
 
+Route::get('/run-job','JobController@run');
 Auth::routes();
 
 Route::get('province','DataController@province');
@@ -44,19 +46,22 @@ Route::middleware(['auth'])->group(function(){
   Route::get('/purchased-items','OrdersController@myOrders');
   Route::get('/my-bids','OrdersController@myBids');
   Route::resource('messages', 'ConversationController');
-
   Route::get('/bought-item/{id}','OrdersController@winner')->name('order.status');
+
+  Route::resource('rating','RatingsController');
 });
 
 Route::prefix('shop')->group(function () {
+  Route::get('/product/sold','ProductsController@sold')->name('sold.products');
+
   Route::middleware(['auth'])->group(function(){
-
-
     Route::resource('product','ProductsController',['except'=>['index', 'show']]);
     Route::resource('orders','OrdersController');
     Route::resource('photos','PhotosController');
 
+    Route::resource('order','OrderStatusController');
   });
+
 
   Route::middleware(['auth','seller'])->group(function(){
 
@@ -69,4 +74,6 @@ Route::prefix('shop')->group(function () {
   Route::resource('product','ProductsController')->only([
     'index', 'show'
   ]);
+
+
 });

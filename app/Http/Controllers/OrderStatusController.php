@@ -67,9 +67,13 @@ class OrderStatusController extends Controller
      * @param  \App\OrderStatus  $orderStatus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrderStatus $orderStatus)
+    public function update(Request $request,$id)
     {
-        //
+        $order = OrderStatus::find($id);
+        $order->status_id = $request->nextStats;
+        $order->save();
+
+        return redirect()->back()->with('success','Status has been updated.');
     }
 
     /**

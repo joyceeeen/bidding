@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Vinkla\Hashids\Facades\Hashids;
 use App\Products;
 use Carbon\Carbon;
+use App\OrderStatus;
 class OrdersController extends Controller
 {
   /**
@@ -22,20 +23,20 @@ class OrdersController extends Controller
   public function winner($id){
     $productId = Hashids::decode($id)[0];
 
-    $product = Products::whereId($productId)->where('has_ended',1)->orWhere('ends_on','<=',Carbon::now())->whereHas('lastBid')->first();
+    $product = Products::whereId($productId)->whereHas('winner')->first();
+    $averageRate = $product->ratings->average('rate');
 
     if(!$product){
         abort(404);
     }
 
-    return view('products.winning',compact('product'));
+    return view('products.winning',compact('product','averageRate'));
   }
 
   public function myOrders(){
     $auth = auth()->user();
-    $orders = Orders::where('user_id',$auth->id)->whereHas('product',function($query){
-      $query->where('has_ended',1)->orWhere('ends_on', '<=', Carbon::now());
-    })->get();
+
+    $orders = Orders::where('user_id',$auth->id)->whereHas('finalOrder')->with(['product','finalOrder'])->get();
 
 
     return view('products.purchased-items',compact('orders'));

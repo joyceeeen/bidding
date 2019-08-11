@@ -5,8 +5,8 @@
   <div class="row">
     <div class="col-lg-12">
       <center>
-      
-        @if(auth()->user()->is_confirmed != 0)
+
+        @if(auth()->user()->is_confirmed > 0)
         <div class="col-lg-6">
           <!-- Material form register -->
 
