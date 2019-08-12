@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Ratings;
 use Illuminate\Http\Request;
 use App\OrderStatus;
+use App\Products;
+use Notification;
+use App\Notifications\OrderNotification;
+
 class RatingsController extends Controller
 {
     /**
@@ -47,6 +51,19 @@ class RatingsController extends Controller
         $order = OrderStatus::find($request->order_id);
         $order->status_id = 5;
         $order->save();
+
+        $product = Products::find($ratings->product_id);
+
+        $details = [
+          'greeting' => mb_strtoupper($product->title),
+          'body' => 'Transaction Completed!',
+          'actionText' => '',
+          'actionURL' => route('order.status', ['product'=>$product->hash]),
+          'order_id' => $order->id
+        ];
+
+        Notification::send($user, new OrderNotification($details));
+        Notification::send($product->seller, new OrderNotification($details));
 
         return redirect()->back()->with('success','Item has been successfully rated!');
 

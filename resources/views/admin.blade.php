@@ -63,6 +63,10 @@
                     @csrf
                     <td align="center">
                       <input type="hidden" name="user" value="{{$user->hash}}"/>
+                      <div class="md-form">
+                        <label for="description">Remarks</label>
+                        <textarea id="remarks" class="form-control @error('remarks') is-invalid @enderror md-textarea" name="remarks" value="{{ old('remarks') }}" required autocomplete="off"></textarea>
+                      </div>
                       <button type="submit" name="button" class="btn btn-danger">Decline</button>
                     </td>
                   </form>

@@ -8,6 +8,9 @@ use Vinkla\Hashids\Facades\Hashids;
 use App\Products;
 use Carbon\Carbon;
 use App\OrderStatus;
+use Notification;
+use App\Notifications\OrderNotification;
+
 class OrdersController extends Controller
 {
   /**
@@ -27,7 +30,7 @@ class OrdersController extends Controller
     $averageRate = $product->ratings->average('rate');
 
     if(!$product){
-        abort(404);
+      abort(404);
     }
 
     return view('products.winning',compact('product','averageRate'));
@@ -69,18 +72,43 @@ class OrdersController extends Controller
   */
   public function store(Request $request)
   {
+
     $productId = Hashids::decode($request->product)[0];
-    // $lastBidValue = Orders::whereProductId($productId)->oldest();
+    $productDetails = Products::find($productId);
+    $user = auth()->user();
+    $seller = $productDetails->seller;
+    $lastBidder = $productDetails->lastBid->user;
+
     // if()
     // $request->validate([
     //   'bid' => 'required|min:'.$lastBidValue->amount,
     // ]);
-
     $orders = new Orders();
     $orders->product_id = $productId;
     $orders->user_id = auth()->user()->id;
     $orders->amount = $request->bid;
     $orders->save();
+
+
+
+    $details = [
+      'greeting' => mb_strtoupper($productDetails->title).': NEW BID!',
+      'body' => mb_strtoupper($productDetails->title).": " .$user->name." bidded an amount of PHP ".$request->bid,
+      'actionText' => mb_strtoupper($productDetails->title),
+      'actionURL' => route('product.show', ['product'=>$request->product]),
+      'order_id' => $orders->id
+    ];
+
+    $details2 = [
+      'greeting' => mb_strtoupper($productDetails->title).': Higher bid has been made!',
+      'body' => "Someone bidded an amount of PHP ".$request->bid,
+      'actionText' => mb_strtoupper($productDetails->title),
+      'actionURL' => route('product.show', ['product'=>$request->product]),
+      'order_id' => $orders->id
+    ];
+
+    Notification::send($seller, new OrderNotification($details));
+    Notification::send($lastBidder, new OrderNotification($details2));
 
     return redirect()->back();
   }

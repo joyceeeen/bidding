@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Vinkla\Hashids\Facades\Hashids;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
   use Notifiable;
 
@@ -17,7 +17,7 @@ class User extends Authenticatable
   * @var array
   */
   protected $fillable = [
-    'first_name','last_name','mobile_number','is_seller','is_admin', 'email', 'password','is_confirmed'
+    'first_name','last_name','mobile_number','is_seller','is_admin', 'email', 'password','is_confirmed','remarks'
   ];
 
   /**

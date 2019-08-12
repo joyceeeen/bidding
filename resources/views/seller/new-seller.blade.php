@@ -9,7 +9,12 @@
           <div class="card">
 
             <h5 class="card-header success-color white-text text-center py-4">
-              <strong>@if(auth()->user()->is_confirmed == -1) Oh no! Your application has been declined. <br> @endif
+              <strong>
+                @if(auth()->user()->is_confirmed == -1)
+                Oh no! Your application has been declined.
+                <p> Remarks: {{auth()->user()->remarks}}</p>
+                <br>
+                @endif
                 We just need a little more information from you as a seller.</strong>
             </h5>
 

@@ -78,26 +78,15 @@
                 <i class="fas fa-bell" style="font-size: 20px; float: left; color: #fff">
                 </i>
               </a>
-              <span class="badge badge-danger">6</span>
+              <span style="display:none" id="badge-notification" class="badge badge-danger"></span>
               <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="dropdownMenu1">
                 <div class="beeperNub"><i class="fas fa-sort-up"></i></div>
 
                 <li role="presentation">
                   <a href="#" class="dropdown-menu-header">Notifications</a>
                 </li>
-                <ul class="timeline timeline-icons timeline-sm" style="width:210px">
-                  <a href="#">
-                    <li class="icon">
-                      <span class="icon"><i class="fa fa-user"></i></span>
-                      <span class="text">Someone Like Your Post</span>
-                    </li>
-                  </a>
-                  <a href="#">
-                    <li class="icon">
-                      <span class="icon"><i class="fa fa-user"></i></span>
-                      <span class="text">Someone Like Your Post</span>
-                    </li>
-                  </a>
+                <ul id="notifications" class="timeline timeline-icons timeline-sm" style="width:210px">
+
                 </ul>
 
               </ul>

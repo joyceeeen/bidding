@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\OrderStatus;
 use Illuminate\Http\Request;
-
+use Notification;
+use App\Status;
+use App\Notifications\OrderNotification;
 class OrderStatusController extends Controller
 {
     /**
@@ -72,6 +74,26 @@ class OrderStatusController extends Controller
         $order = OrderStatus::find($id);
         $order->status_id = $request->nextStats;
         $order->save();
+
+        $status = Status::find($request->nextStats);
+        $body = $status->status;
+
+        if($request->nextStats == 3){
+          $body = $status->status'. You can now review the product!'.
+        }
+
+        $details = [
+          'greeting' => mb_strtoupper($order->order->product->title),
+          'body' => $body,
+          'actionText' => '',
+          'actionURL' => route('order.status', ['product'=>$order->order->product->hash]),
+          'order_id' => $order->id
+        ];
+
+
+        Notification::send($order->order->user, new OrderNotification($details));
+
+        // Notification::send($user, new MyFirstNotification($details));
 
         return redirect()->back()->with('success','Status has been updated.');
     }

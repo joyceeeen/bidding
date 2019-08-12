@@ -32,17 +32,23 @@ Route::middleware(['auth','admin'])->group(function(){
 });
 
 Route::get('/run-job','JobController@run');
-Auth::routes();
+
+Auth::routes(['verify' => true]);
 
 Route::get('province','DataController@province');
 Route::get('city','DataController@city');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('seller','UserController')->middleware('auth');
 
 
-Route::middleware(['auth'])->group(function(){
+
+
+Route::middleware(['auth','verified'])->group(function(){
+
+  Route::get('notifications','NotificationsController@index')->name('notifications');
+  Route::get('notification-read/{id?}','NotificationsController@read')->name('notifications.read');
+
+  Route::get('/home', 'HomeController@index')->name('home');
+  Route::resource('seller','UserController');
   Route::get('/purchased-items','OrdersController@myOrders');
   Route::get('/my-bids','OrdersController@myBids');
   Route::resource('messages', 'ConversationController');
@@ -53,8 +59,7 @@ Route::middleware(['auth'])->group(function(){
 
 Route::prefix('shop')->group(function () {
   Route::get('/product/sold','ProductsController@sold')->name('sold.products');
-
-  Route::middleware(['auth'])->group(function(){
+  Route::middleware(['auth','verified'])->group(function(){
     Route::resource('product','ProductsController',['except'=>['index', 'show']]);
     Route::resource('orders','OrdersController');
     Route::resource('photos','PhotosController');
@@ -63,10 +68,8 @@ Route::prefix('shop')->group(function () {
   });
 
 
-  Route::middleware(['auth','seller'])->group(function(){
-
+  Route::middleware(['auth','verified','seller'])->group(function(){
     Route::get('/','ProductsController@myProducts')->name('product.my-products');
-
     Route::resource('category','CategoryController');
 
   });
@@ -74,6 +77,5 @@ Route::prefix('shop')->group(function () {
   Route::resource('product','ProductsController')->only([
     'index', 'show'
   ]);
-
 
 });

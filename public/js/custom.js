@@ -160,4 +160,48 @@ $(document).ready(function() {
     // submit here using 'finalForm' after your request endpoint
   });
 
+  if($('#notifications').length){
+
+    $.ajax({
+      type:'get',
+      url:'/notifications',
+      success:function(data){
+
+        if(data.unread > 0){
+          $("#badge-notification").show();
+        }
+
+        $("#badge-notification").html(data.unread);
+
+        $.each(data[0], function( index, value ) {
+          if(value.read_at){
+            var item ='<a class=" waves-effect waves-light notification-link" target="_blank" data-id="'+value.id+'" href="'+value.data.action+'"><li class="icon"><span class="icon"><i class="fa fa-user"></i>'+value.data.greeting+'</span><p class="text" style="font-size:smaller">'+value.data.body+'</p></li></a>'
+          }else{
+            var item ='<a class=" waves-effect waves-light notification-link" style="background:#388e3c91" target="_blank" data-id="'+value.id+'" href="'+value.data.action+'"><li class="icon"><span class="icon"><i class="fa fa-user"></i>'+value.data.greeting+'</span><p class="text" style="font-size:smaller">'+value.data.body+'</p></li></a>'
+          }
+          $("#notifications").append(item);
+        });
+      },
+      error: function(data){
+      }
+    });
+  }
+
+  $(document).on('click','.notification-link',function(event){
+
+    var id = $(this).data('id');
+
+    $.ajax({
+      type:'get',
+      url:'/notification-read/'+id,
+      success:function(data){
+
+      },
+      error:function(data){
+
+      }
+    })
+  });
+
+
 });

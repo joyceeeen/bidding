@@ -49,7 +49,7 @@
                   </strong>
                 </h4>
                 <!--Rating-->
-                <div class="rating" data-rating="{{$product->ratings->average('rate')}}">
+                <div class="rating" data-rating="{{number_format($product->ratings->average('rate'))}}">
                   <span class="far fa-star" data-score='1'></span>
                   <span class="far fa-star" data-score='2'></span>
                   <span class="far fa-star" data-score='3'></span>

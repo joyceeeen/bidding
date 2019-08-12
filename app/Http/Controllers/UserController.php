@@ -42,6 +42,7 @@ class UserController extends Controller
   public function decline(Request $request){
     $id =  Hashids::decode($request->user)[0];
     $user = User::find($id);
+    $user->remarks = $request->remarks;
     $user->is_confirmed = -1;
     $user->save();
 

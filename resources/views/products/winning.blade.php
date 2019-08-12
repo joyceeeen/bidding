@@ -89,7 +89,7 @@
 
           <p class="lead font-weight-bold mb-0">{{$product->title}}</p>
 
-          <div class="rating" data-rating="{{$averageRate}}">
+          <div class="rating" data-rating="{{number_format($averageRate)}}">
             <span class="far fa-star" data-score='1'></span>
             <span class="far fa-star" data-score='2'></span>
             <span class="far fa-star" data-score='3'></span>
