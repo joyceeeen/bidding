@@ -69,7 +69,7 @@
 
 
 
-          <p class="mb-0">Unit: {{$product->base_price.' '.$product->unit}}</p>
+          <p class="mb-0">Unit: {{$product->weight.' '.$product->unit}}</p>
           <p class="mb-0">Address: {{$product->location}}</p>
           <hr>
           <span>Last Price:</span>

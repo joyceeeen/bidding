@@ -58,7 +58,6 @@ Route::middleware(['auth','verified'])->group(function(){
 });
 
 Route::prefix('shop')->group(function () {
-  Route::get('/product/sold','ProductsController@sold')->name('sold.products');
   Route::middleware(['auth','verified'])->group(function(){
     Route::resource('product','ProductsController',['except'=>['index', 'show']]);
     Route::resource('orders','OrdersController');
@@ -69,6 +68,7 @@ Route::prefix('shop')->group(function () {
 
 
   Route::middleware(['auth','verified','seller'])->group(function(){
+    Route::get('/product/sold','ProductsController@sold')->name('sold.products');
     Route::get('/','ProductsController@myProducts')->name('product.my-products');
     Route::resource('category','CategoryController');
 

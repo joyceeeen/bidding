@@ -17,24 +17,23 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
       $products = null;
-      if($request->code){
-        $category = Hashids::decode($request->code)[0];
-        $categories = ProductCategory::where('category_id',$category)->groupBy('product_id')->pluck('product_id');
-        if($request->product_name){
-          $products = Products::whereIn('id',$categories)->where('title','like','%'.$request->product_name.'%')->get();
-        }else{
+     if($request->code){
+       $category = Hashids::decode($request->code)[0];
+       $categories = ProductCategory::where('category_id',$category)->groupBy('product_id')->pluck('product_id');
+       if($request->product_name){
+         $products = Products::whereIn('id',$categories)->where('title','like','%'.$request->product_name.'%')->with('thumbnail')->get();
+       }else{
 
-          $products = Products::whereIn('id',$categories)->get();
-        }
-      }else{
-        if($request->product_name){
-          $products = Products::where('title','like','%'.$request->product_name.'%')->get();
-        }else{
-          $products = Products::all();
-        }
-      }
-      return view('products.products',compact('products'));
-
+         $products = Products::whereIn('id',$categories)->with('thumbnail')->get();
+       }
+     }else{
+       if($request->product_name){
+         $products = Products::where('title','like','%'.$request->product_name.'%')->with('thumbnail')->get();
+       }else{
+         $products = Products::with('thumbnail')->get();
+       }
+     }
+     return view('products.products',compact('products'));
     }
 
     public function sold(Request $request){

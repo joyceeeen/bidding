@@ -45,8 +45,7 @@
           <div class="card card-cascade narrower card-ecommerce mb-4 mt-4">
             <!-- Card image -->
             <div class="view view-cascade overlay">
-              <img src="{{asset($product->thumbnail->img_path)}}" class="card-img-top"
-              alt="sample photo">
+              <img src="{{$product->thumbnail ? asset($product->thumbnail->img_path) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2P4////fwAJ+wP9BUNFygAAAABJRU5ErkJggg=='}}" class="card-img-top" alt="sample photo">
               <a href="{{route('product.show', ['product'=>$product->hash])}}">
                 <div class="mask rgba-white-slight"></div>
               </a>
@@ -56,7 +55,7 @@
             <div class="card-body card-body-cascade text-center">
               <!-- Category & Title -->
               <a class="grey-text">
-                <h5>{{$product->mainCategory->description->category_name}}</h5>
+                <h5>{{$product->mainCategory ? $product->mainCategory->description->category_name : ''}}</h5>
               </a>
               <h4 class="card-title">
                 <strong>

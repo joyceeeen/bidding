@@ -61,7 +61,7 @@
                       </div>
                       <!-- E-mail -->
                       <div class="md-form mt-0">
-                          <input type="text" id="materialRegisterFormEmail" class="form-control" value="" required>
+                          <input type="text" name="mobile_number" autocomplete="off" id="materialRegisterFormEmail" class="form-control" value="" required>
                           <label for="materialRegisterFormEmail">Phone Number</label>
                       </div>
                       <!-- Password -->

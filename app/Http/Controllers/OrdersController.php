@@ -77,7 +77,7 @@ class OrdersController extends Controller
     $productDetails = Products::find($productId);
     $user = auth()->user();
     $seller = $productDetails->seller;
-    $lastBidder = $productDetails->lastBid->user;
+    $lastDetails = $productDetails->lastBid;
 
     // if()
     // $request->validate([
@@ -99,16 +99,20 @@ class OrdersController extends Controller
       'order_id' => $orders->id
     ];
 
-    $details2 = [
-      'greeting' => mb_strtoupper($productDetails->title).': Higher bid has been made!',
-      'body' => "Someone bidded an amount of PHP ".$request->bid,
-      'actionText' => mb_strtoupper($productDetails->title),
-      'actionURL' => route('product.show', ['product'=>$request->product]),
-      'order_id' => $orders->id
-    ];
+    if($lastDetails){
+      $lastBidder = $productDetails->lastBid->user;
+
+      $details2 = [
+        'greeting' => mb_strtoupper($productDetails->title).': Higher bid has been made!',
+        'body' => "Someone bidded an amount of PHP ".$request->bid,
+        'actionText' => mb_strtoupper($productDetails->title),
+        'actionURL' => route('product.show', ['product'=>$request->product]),
+        'order_id' => $orders->id
+      ];
+     Notification::send($lastBidder, new OrderNotification($details2));
+    }
 
     Notification::send($seller, new OrderNotification($details));
-    Notification::send($lastBidder, new OrderNotification($details2));
 
     return redirect()->back();
   }
