@@ -79,7 +79,7 @@ class OrderStatusController extends Controller
         $body = $status->status;
 
         if($request->nextStats == 3){
-          $body = $status->status'. You can now review the product!'.
+          $body = $status->status.' You can now review the product!';
         }
 
         $details = [

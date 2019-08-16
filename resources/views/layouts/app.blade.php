@@ -80,7 +80,7 @@
                 </i>
               </a>
               <span style="display:none" id="badge-notification" class="badge badge-danger"></span>
-              <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="dropdownMenu1">
+              <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="dropdownMenu1" style="height: 330px; overflow: auto;">
                 <div class="beeperNub"><i class="fas fa-sort-up"></i></div>
 
                 <li role="presentation">

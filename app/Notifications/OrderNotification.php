@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class OrderNotification extends Notification
+class OrderNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $details;

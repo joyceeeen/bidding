@@ -53,9 +53,11 @@
 
           </ol>
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100 imgCarousel" src="http://localhost:8000/images/028n2e/15599826555cfb723f4d1ac.jpg" alt="First slide">
+            @foreach($product->photos as $key=>$photo)
+            <div class="carousel-item {{$key === 0 ? 'active' :''}}">
+              <img class="d-block w-100 imgCarousel" src="{{asset($photo->img_path)}}" alt="First slide">
             </div>
+            @endforeach
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -99,7 +101,7 @@
 
 
 
-          <p class="mb-0">Unit: {{$product->base_price.' '.$product->unit}}</p>
+          <p class="mb-0">Unit: {{$product->weight.' '.$product->unit}}</p>
           <p class="mb-0">Address: {{$product->location}}</p>
           <hr>
           <span>Last Price:</span>

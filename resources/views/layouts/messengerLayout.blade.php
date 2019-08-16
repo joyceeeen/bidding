@@ -32,7 +32,7 @@
 
         <!-- Brand -->
         <a class="navbar-brand waves-effect" href="/">
-          <strong>Crops Bidding System</strong>
+          <strong>WATSAP</strong>
         </a>
 
         <!-- Collapse -->
@@ -46,13 +46,10 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="#">Home
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="/shop/product">Shop
               <span class="sr-only">(current)</span>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="{{route('product.my-products')}}" >Products</a>
           </li>
 
         </ul>
@@ -64,6 +61,9 @@
             <a class="nav-link" href="{{ route('seller.index') }}">Become A Seller</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/prediction">{{ __('Prediction') }}</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
           </li>
           @if (Route::has('register'))
@@ -72,6 +72,7 @@
           </li>
           @endif
           @else
+
           <li class="nav-item nav-dropdown">
             <div class="dropdown" style="padding: 13px;margin-top:-3px;float:right;">
               <a href="#" onclick="return false;" role="button" data-toggle="dropdown" id="dropdownMenu1" data-target="#" style="float: left;    margin-top: 2px;" aria-expanded="true">
@@ -79,12 +80,13 @@
                 </i>
               </a>
               <span style="display:none" id="badge-notification" class="badge badge-danger"></span>
-              <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="dropdownMenu1">
+              <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="dropdownMenu1" style="height: 330px; overflow: auto;">
                 <div class="beeperNub"><i class="fas fa-sort-up"></i></div>
 
                 <li role="presentation">
                   <a href="#" class="dropdown-menu-header">Notifications</a>
                 </li>
+
                 <ul id="notifications" class="timeline timeline-icons timeline-sm" style="width:210px">
 
                 </ul>
@@ -97,8 +99,12 @@
 
           </li>
           <li class="nav-item">
-            @if(Auth::user()->is_seller)
-              <a class="nav-link" href="{{ route('product.create') }}">Add Product</a>
+            <a class="nav-link" href="/prediction">{{ __('Prediction') }}</a>
+          </li>
+          <li class="nav-item">
+
+            @if(Auth::user()->is_seller && Auth::user()->is_confirmed > 0)
+            <a class="nav-link" href="{{ route('product.create') }}">Add Product</a>
             @else
             <a class="nav-link" href="{{ route('seller.index') }}">Become A Seller</a>
             @endif
@@ -108,7 +114,22 @@
               {{ Auth::user()->name }} <span class="caret"></span>
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+
+            <div class="dropdown-menu dropdown-menu-right">
+              @if(auth()->check())
+              @if(auth()->user()->is_seller)
+              <a class="dropdown-item" href="{{route('seller.profile',['id'=>auth()->user()->hash])}}" >My Products</a>
+              <a class="dropdown-item" href="{{route('sold.products')}}" >Sold Products</a>
+
+              @endif
+
+              <a class="dropdown-item" href="/my-bids">My Bids</a>
+
+              <a class="dropdown-item" href="/purchased-items">Purchased Items</a>
+
+              @endif
+
               <a class="dropdown-item" href="{{ route('logout') }}"
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">

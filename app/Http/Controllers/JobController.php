@@ -12,7 +12,7 @@ use App\Notifications\OrderNotification;
 class JobController extends Controller
 {
     public function run(){
-      $products = Products::where('ends_on','<=',Carbon::now())->get();
+      $products = Products::where('ends_on','<=',Carbon::now())->where('has_ended','<>',1)->get();
       foreach($products as $product){
         $product->has_ended = 1;
         $product->save();
@@ -24,26 +24,26 @@ class JobController extends Controller
           $order->order_id = $lastBid->id;
           $order->status_id = 1;
           $order->save();
+
+          $details2 = [
+            'greeting' => mb_strtoupper($product->title).': You won the bidding!',
+            'body' => "Last Price: PHP ".$lastBid->amount,
+            'actionText'=>'',
+            'actionURL' => route('order.status', ['product'=>$product->hash]),
+            'order_id' => $lastBid->id
+          ];
+
+          $details = [
+            'greeting' => mb_strtoupper($product->title).': BIDDING ENDED!',
+            'body' => "Last Price: PHP ".$lastBid->amount,
+            'actionText'=>'',
+            'actionURL' => route('sold.products'),
+            'order_id' => $lastBid->id
+          ];
+           Notification::send($product->seller, new OrderNotification($details));
+           Notification::send($lastBid->user, new OrderNotification($details2));
+              //SEND EMAIL
         }
-
-        $details = [
-          'greeting' => mb_strtoupper($productDetails->title).': BIDDING ENDED!',
-          'body' => "Last Price: PHP ".$lastBid->amount,
-          'actionURL' => route('sold.products'),
-          'order_id' => $lastBid->id
-        ];
-
-
-        $details2 = [
-          'greeting' => mb_strtoupper($productDetails->title).': You won the bidding!',
-          'body' => "Last Price: PHP ".$lastBid->amount,
-          'actionURL' => route('order.status', ['product'=>$product->hash]),
-          'order_id' => $lastBid->id
-        ];
-
-        Notification::send($product->seller, new OrderNotification($details));
-        Notification::send($lastBid->user, new OrderNotification($details2));
-        //SEND EMAIL
       }
     }
 }
