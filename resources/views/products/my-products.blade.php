@@ -74,11 +74,11 @@
                     <strong>Last Price: PHP {{$product->lastBid == null ? $product->base_price : $product->lastBid->amount}}</strong>
                     </span>
                   </p>
-                  @if($product->ends_on <= Carbon\Carbon::now() && $product->lastBid)
+                  @if($product->ends_on < Carbon\Carbon::now() && $product->lastBid)
                   <p class="mb-0">
                     <span class="badge green mr-1">Sold</span>
                   </p>
-                  @elseif($product->ends_on <= Carbon\Carbon::now() && !$product->lastBid)
+                  @elseif($product->ends_on < Carbon\Carbon::now() && !$product->lastBid)
                   <p class="mb-0">
                     <span class="badge red mr-1">Expired</span>
                   </p>
