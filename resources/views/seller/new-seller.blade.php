@@ -73,6 +73,12 @@
 
                   <input type="checkbox" checked name="is_seller" value="1" style="display:none"/>
                 </div>
+                <br>
+                <!-- Default unchecked -->
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked" required>
+                    <label class="custom-control-label" for="defaultUnchecked">I agree to the <a href="javascript:;"  onClick="window.open('terms','msgWindow','toolbar=no, scrollbars=yes, resizable=no, width=500px, height=700px')">Terms and Conditions</a> *</label>
+                </div>
                 <!-- Sign up button -->
                 <button class="btn btn-outline-success btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Proceed</button>
               </form>

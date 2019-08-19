@@ -20,6 +20,10 @@ Route::get('/prediction', function () {
   return view('prediction');
 });
 
+Route::get('/terms', function () {
+  return view('terms');
+});
+
 Route::post('prediction','PredictionController@price');
 Route::get('prediction-peak','PredictionController@peak');
 
