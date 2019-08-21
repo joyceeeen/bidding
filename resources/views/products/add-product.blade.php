@@ -54,7 +54,7 @@
                   <div class="col">
                     <div class="md-form">
                       <select  name="province" value="{{ old('province') }}" id="province" class="mdb-select md-form @error('province') is-invalid @enderror" required>
-                        <option value="" disabled selected>Select Provice</option>
+                        <option value="" disabled>Select Provice</option>
 
                       </select>
                       <label for="status">Province</label>
