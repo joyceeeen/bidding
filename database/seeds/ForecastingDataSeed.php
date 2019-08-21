@@ -11,7 +11,7 @@ class ForecastingDataSeed extends Seeder
      */
     public function run()
     {
-      DB::table('peak_season')->insert([
+      DB::table('peak_seasons')->insert([
         ['item' => 'ampalaya','month'=>'october','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
         ['item' => 'ampalaya','month'=>'november','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
         ['item' => 'ampalaya','month'=>'december','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
