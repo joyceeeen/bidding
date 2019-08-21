@@ -64,13 +64,6 @@
               </h4>
               <p style="font-size: smaller">{{$product->ilan}}</p>
               <!--Rating-->
-              <div class="rating" data-rating="{{number_format($product->ratings->average('rate'))}}">
-                <span class="far fa-star" data-score='1'></span>
-                <span class="far fa-star" data-score='2'></span>
-                <span class="far fa-star" data-score='3'></span>
-                <span class="far fa-star" data-score='4'></span>
-                <span class="far fa-star" data-score='5'></span>
-              </div>
               <!-- Description -->
               <p class="card-text">{{$product->description}}
               </p>
