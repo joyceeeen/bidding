@@ -44,11 +44,7 @@
 
         <!--Content-->
         <div class="p-4">
-          <p style="float:right;">
-            <a href="#"><i class="fab fa-twitter-square" style="color:#28aae1;font-size:2em;"></i></a>
-            <a href="#"><i class="fab fa-facebook-square" style="color:rgb(66, 103, 178);font-size:2em;"></i></a>
-            <a href="#"><i class="fab fa-instagram" style="color:#de397d;font-size:2em;"></i></a>
-          </p>
+
           <div>
             <a>
               <span class="badge-category blue mr-1">{{$product->mainCategory->description->category_name}}</span>
@@ -91,7 +87,7 @@
             @csrf
             <!-- Default input -->
             <input type="hidden" name="lastBid" value="{{$product->lastBid != null ? $product->lastBid->amount : $product->base_price }}"/>
-            <input type="number" min="{{$product->lastBid != null ? $product->lastBid->amount + 1 : $product->base_price + 1 }}" name="bid" autocomplete="off" class="form-control" style="width: 100px">
+            <input type="number" min="{{$product->lastBid != null ? $product->lastBid->amount + 1 : $product->base_price + 1 }}" name="bid" autocomplete="off" class="form-control" style="width: 100px" required>
             <button class="btn btn-success btn-md my-0 p" type="submit"> Bid
               <i class="fas fa-gavel ml-1"></i>
             </button>

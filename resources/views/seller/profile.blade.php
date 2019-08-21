@@ -9,13 +9,21 @@
   <div class="container pt-5">
     <div class="row">
       <div class="col-md-3 text-center">
-        <img src="{{asset('images/gardener.png')}}" alt="" class="img-rounded img-responsive pb-3" style="height:200px" />
+
+        <img src="{{$user->avatar ?asset($user->avatar) : asset('images/gardener.png') }}" alt="" class="img-rounded img-responsive pb-3" style="height:200px" />
+        @if($user->id == auth()->user()->id)
+        <form id="uploadForm" method="post" enctype="multipart/form-data">
+          <h6>Upload a different photo...</h6>
+          <input type="file" name="avatar" id="upload-avatar" accept="images/*" class="form-control">
+        </form>
+        @endif
         <h4>{{$user->name}}</h4>
         <!-- <small><cite title="San Francisco, USA"> <i class="glyphicon glyphicon-map-marker">
       </i></cite></small> -->
       <p>
         <i class="fa fa-envelope text-primary"></i> {{$user->email}}
         <br />
+
         <!-- <i class="fa fa-gift text-primary"></i> June 02, 1988</p> -->
       </div>
       <div class="col-lg-9">
@@ -30,7 +38,7 @@
             <div class="card card-cascade narrower card-ecommerce mb-4 mt-4">
               <!-- Card image -->
               <div class="view view-cascade overlay">
-                <img src="{{asset($product->thumbnail->img_path)}}" class="card-img-top"
+                <img src="{{ $product->thumbnail ? asset($product->thumbnail->img_path) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2P4////fwAJ+wP9BUNFygAAAABJRU5ErkJggg==' }}" class="card-img-top"
                 alt="sample photo">
                 <a href="{{route('product.show', ['product'=>$product->hash])}}">
                   <div class="mask rgba-white-slight"></div>
@@ -121,7 +129,7 @@
                   </div>
                   <p class="review-text">
                     {{$rating->comment}}
-                   </p>
+                  </p>
 
                   <small class="review-date">{{\Carbon\Carbon::parse($rating->created_at)->format('F d, Y')}}</small>
                   <hr>

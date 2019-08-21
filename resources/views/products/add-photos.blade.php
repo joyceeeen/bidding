@@ -15,11 +15,11 @@
 
             <!--Card content-->
             <div class="card-body px-lg-5 pt-3">
-              <form action="{{ route('photos.store') }}" class="dropzone" id="my-awesome-dropzone">
+              <form action="{{ route('photos.store') }}" class="dropzone" id="my-dropzone" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="product" value="{{request()->product}}"/>
                 <div class="fallback">
-                  <input name="file" type="file" multiple />
+                  <input name="file" type="file" multiple required />
                 </div>
               </form>
 
@@ -40,7 +40,7 @@
                   </div>
                 </div>
 
-                <button class="btn btn-outline-success btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Proceed</button>
+                <button class="btn btn-outline-success btn-rounded btn-block my-4 waves-effect z-depth-0" id="uploadImageButton" disabled type="submit">Proceed</button>
               </form>
             </div>
           </div>

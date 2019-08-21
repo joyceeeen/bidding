@@ -9,7 +9,7 @@
   <div class="container pt-5">
     <div class="row">
       <div class="col-md-3 text-center">
-        <img src="{{asset('images/gardener.png')}}" alt="" class="img-rounded img-responsive pb-3" style="height:200px" />
+        <img src="{{$user->avatar ?asset($user->avatar) : asset('images/gardener.png') }}" alt="" class="img-rounded img-responsive pb-3" style="height:200px" />
         <h4>{{$user->name}}</h4>
         <!-- <small><cite title="San Francisco, USA"> <i class="glyphicon glyphicon-map-marker">
       </i></cite></small> -->

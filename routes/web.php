@@ -50,7 +50,7 @@ Route::middleware(['auth','verified'])->group(function(){
 
   Route::get('notifications','NotificationsController@index')->name('notifications');
   Route::get('notification-read/{id?}','NotificationsController@read')->name('notifications.read');
-
+  Route::post('avatar','UserController@avatar');
   Route::get('/home', 'HomeController@index')->name('home');
   Route::resource('seller','UserController');
   Route::get('/purchased-items','OrdersController@myOrders');

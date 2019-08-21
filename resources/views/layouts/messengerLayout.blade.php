@@ -119,7 +119,7 @@
             <div class="dropdown-menu dropdown-menu-right">
               @if(auth()->check())
               @if(auth()->user()->is_seller)
-              <a class="dropdown-item" href="{{route('seller.profile',['id'=>auth()->user()->hash])}}" >My Products</a>
+              <a class="dropdown-item" href="{{route('seller.profile',['id'=>auth()->user()->hash])}}" >My Profile</a>
               <a class="dropdown-item" href="{{route('sold.products')}}" >Sold Products</a>
 
               @endif
@@ -163,41 +163,6 @@
 
 <hr class="mb-4" style="margin-top:0px;">
 
-<!-- Social icons -->
-<div class="pb-4">
-  <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-    <i class="fab fa-facebook-f mr-3"></i>
-  </a>
-
-  <a href="https://twitter.com/MDBootstrap" target="_blank">
-    <i class="fab fa-twitter mr-3"></i>
-  </a>
-
-  <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-    <i class="fab fa-youtube mr-3"></i>
-  </a>
-
-  <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-    <i class="fab fa-google-plus-g mr-3"></i>
-  </a>
-
-  <a href="https://dribbble.com/mdbootstrap" target="_blank">
-    <i class="fab fa-dribbble mr-3"></i>
-  </a>
-
-  <a href="https://pinterest.com/mdbootstrap" target="_blank">
-    <i class="fab fa-pinterest mr-3"></i>
-  </a>
-
-  <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-    <i class="fab fa-github mr-3"></i>
-  </a>
-
-  <a href="http://codepen.io/mdbootstrap/" target="_blank">
-    <i class="fab fa-codepen mr-3"></i>
-  </a>
-</div>
-<!-- Social icons -->
 
 <!--Copyright-->
 <div class="footer-copyright py-3">

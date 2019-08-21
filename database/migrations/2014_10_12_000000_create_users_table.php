@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('mobile_number')->nullable();
             $table->string('email')->unique();
+            $table->text('avatar')->nullable();
             $table->boolean('is_seller')->default(false);
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_confirmed')->default(false);

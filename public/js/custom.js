@@ -1,16 +1,13 @@
+Dropzone.options.myDropzone = {
+    init: function() {
+        this.on("success", function(file, responseText) {
+          $("#uploadImageButton").removeAttr("disabled");
+
+      });
+    }
+};
+
 $(document).ready(function() {
-
-
-
-
-  Dropzone.options.myAwesomeDropzone = {
-    paramName: "file", // The name that will be used to transfer the file
-    acceptedFiles: 'image/*'
-  };
-
-
-
-
 
   $.fn.options = function( options ) {
     // return this.each(function(t, r) {
@@ -186,7 +183,30 @@ $(document).ready(function() {
       }
     });
   }
+  $("#upload-avatar").on('change',function(event){
+    $("#uploadForm").submit();
 
+  });
+
+  $("#uploadForm").on("submit",function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    var form = new FormData(this);
+    $.ajax({
+      url:'/avatar',
+      type:'post',
+      data: form,
+      cache: false,
+      contentType: false,
+      processData:false,
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      },
+      success: function(data){
+        location.reload();
+      }
+    });
+  });
   $(document).on('click','.notification-link',function(event){
 
     var id = $(this).data('id');
@@ -202,6 +222,4 @@ $(document).ready(function() {
       }
     })
   });
-
-
 });

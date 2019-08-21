@@ -57,11 +57,12 @@
               <a class="grey-text">
                 <h5>{{$product->mainCategory ? $product->mainCategory->description->category_name : ''}}</h5>
               </a>
-              <h4 class="card-title">
+              <h4 class="card-title" style="margin-bottom: 0 !important">
                 <strong>
                   <a href="{{route('product.show', ['product'=>$product->hash])}}">{{$product->title}}</a>
                 </strong>
               </h4>
+              <p style="font-size: smaller">{{$product->ilan}}</p>
               <!--Rating-->
               <div class="rating" data-rating="{{number_format($product->ratings->average('rate'))}}">
                 <span class="far fa-star" data-score='1'></span>

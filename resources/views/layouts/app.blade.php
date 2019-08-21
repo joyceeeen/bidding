@@ -118,8 +118,10 @@
 
             <div class="dropdown-menu dropdown-menu-right">
               @if(auth()->check())
-              @if(auth()->user()->is_seller)
-              <a class="dropdown-item" href="{{route('seller.profile',['id'=>auth()->user()->hash])}}" >My Products</a>
+
+
+              @if(auth()->user()->is_seller && Auth::user()->is_confirmed > 0)
+              <a class="dropdown-item" href="{{route('seller.profile',['id'=>auth()->user()->hash])}}" >My Profile</a>
               <a class="dropdown-item" href="{{route('sold.products')}}" >Sold Products</a>
 
               @endif

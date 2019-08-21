@@ -8,6 +8,8 @@ use App\Products;
 use App\IdentificationPhotos;
 use File;
 use Image;
+use App\Notifications\OrderNotification;
+use Notification;
 use Vinkla\Hashids\Facades\Hashids;
 class UserController extends Controller
 {
@@ -36,6 +38,17 @@ class UserController extends Controller
     $user->is_confirmed = 1;
     $user->save();
 
+
+    $details = [
+      'greeting' => 'Seller Application!',
+      'body' => 'Your application has been approved. You can now start selling products :)',
+      'actionText' => '',
+      'actionURL' => route('product.create'),
+      'order_id' => ''
+    ];
+
+    Notification::send($user, new OrderNotification($details));
+
     return redirect()->back();
   }
 
@@ -45,6 +58,16 @@ class UserController extends Controller
     $user->remarks = $request->remarks;
     $user->is_confirmed = -1;
     $user->save();
+
+    $details = [
+      'greeting' => 'Seller Application',
+      'body' => 'Your application has been declined. Remarks: '.$request->remarks,
+      'actionText' => '',
+      'actionURL' => route('seller.index'),
+      'order_id' => ''
+    ];
+
+    Notification::send($user, new OrderNotification($details));
 
     return redirect()->back();
   }
@@ -93,8 +116,28 @@ class UserController extends Controller
   */
   public function edit($id)
   {
-    //
+
+
   }
+
+  public function avatar(Request $request)
+  {
+    $user = auth()->user();
+    $file = $request->file('avatar');
+    $originalPath = 'images/avatar/'.$user->hash.'/';
+    if (!File::exists($originalPath)) {
+      File::makeDirectory($originalPath, 0775, true, true);
+    }
+    $fileMake = Image::make($file);
+    $filename = $originalPath.time().uniqid().'.'.$file->getClientOriginalExtension();
+    $user->avatar = $filename;
+    $user->save();
+    $fileMake->save($filename);
+
+    return response('success',200);
+
+  }
+
 
   /**
   * Update the specified resource in storage.
@@ -128,6 +171,7 @@ class UserController extends Controller
     $thumbnailImage1->save($filename1);
     $thumbnailImage2->save($filename2);
     $user_ids = null;
+
     if($request->existingId){
       $user = auth()->user();
       $user->is_confirmed = 0;

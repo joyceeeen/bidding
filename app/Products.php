@@ -12,11 +12,15 @@ class Products extends Model
     'user_id','title','description','location','province','img_path', 'starts_on','ends_on','base_price', 'weight', 'unit'
   ];
 
-  protected $appends = ['hash'];
+  protected $appends = ['hash','ilan'];
 
   public function getHashAttribute()
   {
     return Hashids::encode($this->id);
+  }
+  public function getIlanAttribute()
+  {
+    return $this->weight.' '.$this->unit;
   }
 
   public function category(){
