@@ -41,29 +41,20 @@
                 <a class="grey-text">
                   <h5>{{$product->mainCategory ? $product->mainCategory->description->category_name : ''}}</h5>
                 </a>
-                <h4 class="card-title">
-                  <strong>
-                    <a href="{{route('product.show', ['product'=>$product->hash])}}">{{$product->title}}</a>
-                  </strong>
-                </h4>
+                <h4 class="card-title" style="margin-bottom: 0 !important">
+                <strong>
+                  <a href="{{route('product.show', ['product'=>$product->hash])}}">{{$product->title}}</a>
+                </strong>
+              </h4>
+              <p style="font-size: smaller">{{$product->ilan}}</p>
                 <!--Rating-->
-                <ul class="rating">
-                  <li>
-                    <i class="fas fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star"></i>
-                  </li>
-                  <li>
-                    <i class="far fa-star"></i>
-                  </li>
-                </ul>
+                <div class="rating" data-rating="{{number_format($product->ratings->average('rate'))}}">
+            <span class="far fa-star" data-score='1'></span>
+            <span class="far fa-star" data-score='2'></span>
+            <span class="far fa-star" data-score='3'></span>
+            <span class="far fa-star" data-score='4'></span>
+            <span class="far fa-star" data-score='5'></span>
+          </div>
                 <!-- Description -->
                 <p class="card-text">{{$product->description}}
                 </p>
