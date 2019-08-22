@@ -15,7 +15,26 @@
     <!-- Section: Products v.1 -->
     <section class="text-center my-5">
       <div class="row pb-4">
-        <div class="col-lg-12">
+        @if($searches)
+        @foreach($searches as $s)
+
+          <div class="col-lg-3">
+            <form id="searchSubmit" method="get" action="{{route('product.index')}}">
+            <!-- <div class="card"> -->
+              <!-- <div class="card-body"> -->
+                <input type="hidden" name="product_name" value="{{$s->search}}" autocomplete="off" class="form-control" placeholder="Product Name">
+                <div class="row">
+                  <div class="col-lg searchCol" >
+                      <button type="submit" class="btn " style="width:100% ;padding: 25%">{{$s->search}}</button>
+                  </div>
+                <!-- </div> -->
+              <!-- </div> -->
+            </form>
+            </div>
+        </div>
+        @endforeach
+        @endif
+        <div class="col-lg-3">
           <div class="card">
             <div class="card-body">
               <form id="searchSubmit" method="get" action="{{route('product.index')}}">
@@ -25,7 +44,9 @@
                       <input type="text" name="product_name" value="" autocomplete="off" class="form-control" placeholder="Product Name">
                     </div>
                   </div>
-                  <div class="col-lg-2 searchCol">
+                </div>
+                <div class="row">
+                  <div class="col-lg searchCol">
                     <div class="md-form" style="margin-top:0px;margin-bottom:0px">
                       <button type="submit" class="btn btn-primary" style="width:100%">Search</button>
                     </div>

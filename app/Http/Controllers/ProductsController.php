@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Vinkla\Hashids\Facades\Hashids;
 use App\ProductCategory;
 use App\Status;
+use App\Query;
 class ProductsController extends Controller
 {
   /**
@@ -17,23 +18,32 @@ class ProductsController extends Controller
   public function index(Request $request)
   {
     $products = null;
+    $searches = null;
     if($request->code){
       $category = Hashids::decode($request->code)[0];
       $categories = ProductCategory::where('category_id',$category)->groupBy('product_id')->pluck('product_id');
+      $searches = Query::selectRaw("search,count(id) as count")->groupBy('search')->orderBy('count','desc')->limit(3)->get();
       if($request->product_name){
+        $query = new Query();
+        $query->search = mb_strtolower($request->product_name);
+        $query->save();
         $products = Products::whereIn('id',$categories)->where('title','like','%'.$request->product_name.'%')->where('has_ended',null)->with('thumbnail')->get();
       }else{
-
         $products = Products::whereIn('id',$categories)->with('thumbnail')->where('has_ended',null)->get();
       }
     }else{
+      $searches = Query::selectRaw("search,count(id) as count")->groupBy('search')->orderBy('count','desc')->limit(3)->get();
       if($request->product_name){
+        $query = new Query();
+        $query->search = mb_strtolower($request->product_name);
+        $query->save();
         $products = Products::where('title','like','%'.$request->product_name.'%')->where('has_ended',null)->with('thumbnail')->get();
       }else{
         $products = Products::with('thumbnail')->where('has_ended',null)->get();
       }
     }
-    return view('products.products',compact('products'));
+
+    return view('products.products',compact('products','searches'));
   }
 
   public function sold(Request $request){
