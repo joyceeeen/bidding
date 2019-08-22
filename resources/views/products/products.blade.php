@@ -22,7 +22,7 @@
                 <div class="row">
                   <div class="col-lg searchCol">
                     <div class="md-form" style="margin-top:0px;margin-bottom:0px">
-                      <input type="text" name="product_name" value="" class="form-control" placeholder="Product Name">
+                      <input type="text" name="product_name" value="" autocomplete="off" class="form-control" placeholder="Product Name">
                     </div>
                   </div>
                   <div class="col-lg-2 searchCol">
