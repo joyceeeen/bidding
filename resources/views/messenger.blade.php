@@ -82,7 +82,7 @@
               <form class="text-center" style="color: #757575;" method="POST" action="{{ route('messages.store') }}">
                 @csrf
                 <input type="hidden" name="convo_id" value="{{$conversations->first()->id}}"/>
-                <input type="text" class="write_msg" name="message" placeholder="Type a message" />
+                <input type="text" class="write_msg" autocomplete="off" name="message" placeholder="Type a message" />
                 <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
               </form>
             </div>
