@@ -77,39 +77,27 @@ $(document).ready(function() {
     $('#canReview').modal('open');
   });
 
+  Number.prototype.toLocaleFixed = function(n) {
+      return this.toLocaleString(undefined, {
+        minimumFractionDigits: n,
+        maximumFractionDigits: n
+      });
+  };
 
-  if($('.predictedPrice')){
-    var locations = ['Batangas City Public Market Batangas','Carbon Public Market Cebu City','Commonwealth Market Quezon City','Mandaluyong Public Market','Mega Q-Mart EDSA Cubao Quezon City','Munoz Public Market','Muntinlupa Market Muntinlupa City','Pasay Market Pasay City MM','Pasig City Mega Market' ,'Pasil Public Market Pasil Cebu City','Tandang Sora Public Market','Viajero Market   Pasig City MM','Zamboanga City Public Market Zambo Sur','New Dagonoy Public Market','Marikina Market Zone MM','Kalibo Public Market Aklan','Lucena City Public Market Quezon','San Jose Trade Town Antique','Sariaya Public Market Quezon','Siniloan Public Market Laguna','Baler Public Market Aurora'];
-    var randomMarket = Math.floor(Math.random()*locations.length);
-
-    $.ajax({
-      type:'post',
-      url:'/prediction',
-      data: { market:randomMarket},
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-      },
-      success:function(response){
-        var price = Number(response.class).toFixed(2);         // 1.00
-        $('.predictedPrice').html(" &#8369;"+ price + " ("+locations[randomMarket]+")");
-      },
-    });
-  }
 
   $("#predictBtn").on('click',function(){
-
-    var month = $(".month-predict").val();
-    var market = $(".province-predict").val();
+    var date = $(".month-predict").val()+' 01,'+$(".year-predict").val();
+    var product = $(".product-predict").val();
     var result = $(".result-predict");
     $.ajax({
       type:'post',
       url:'/prediction',
-      data: { market: market, month: month },
+      data: { date: date, product: product },
       headers: {
         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
       },
       success:function(response){
-        var price = Number(response.class).toFixed(2);         // 1.00
+        var price = Number(response.class).toLocaleFixed(2);               // 1.00
         result.html(" &#8369;"+ price);
       },
     });
@@ -120,19 +108,19 @@ $(document).ready(function() {
 
   $("#peakBtn").on('click',function(){
 
-    var month = $(".month-select").val();
-    var item = $(".item-select").val();
+    var date = $(".month-select").val()+' 01,'+$(".year-select").val();
+    var product = $(".item-select").val();
     var result = $(".peak-result");
     $.ajax({
-      type:'get',
+      type:'post',
       url:'/prediction-peak',
-      data: { item: item, month: month },
+      data: { date: date, product: product  },
       headers: {
         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
       },
       success:function(response){
-        var is_peak = response.is_peak_season;        // 1.00
-        result.html(is_peak);
+        var kls = Number(response.class).toLocaleFixed(2);      // 1.00
+        result.html(kls +' kgs');
       },
     });
 

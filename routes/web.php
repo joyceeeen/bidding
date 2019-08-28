@@ -25,7 +25,7 @@ Route::get('/terms', function () {
 });
 
 Route::post('prediction','PredictionController@price');
-Route::get('prediction-peak','PredictionController@peak');
+Route::post('prediction-peak','PredictionController@peak');
 
 Route::get('/seller/{id}', 'UserController@show')->name('seller.profile');
 
