@@ -10,7 +10,7 @@
   <section id="articles" class="text-center py-5">
 
     <!-- Container -->
-    <div class="container">
+    <div class="container" style="margin-top:120px;">
 
       <!-- Section heading -->
 
@@ -18,18 +18,17 @@
       <section class="text-center my-5">
 
         <!-- Section heading -->
-        <h2 class="h1-responsive font-weight-bold text-center my-5">Prediction</h2>
 
 
 
 
       </section>
       <!-- Section: Products v.4 -->
-      <div class="row">
+      <div class="row mt-5">
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="font-weight-bold text-center">Price Prediction</h5>
+              <h5 class="font-weight-bold text-center">Market Price Prediction</h5>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="md-form">
@@ -104,7 +103,7 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="font-weight-bold text-center">Prediction of Demand</h5>
+              <h5 class="font-weight-bold text-center">Market Demand Prediction</h5>
               <div class="row">
 
               <div class="col-lg-6">
