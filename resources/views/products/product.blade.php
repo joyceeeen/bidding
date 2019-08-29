@@ -82,7 +82,8 @@
           <p class="mb-0 font-weight-bold">Bidding ended last {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}</p>
           @endif
           @else
-          @if($product->ends_on >= Carbon\Carbon::now())
+          @if($product->ends_on >= Carbon\Carbon::now() )
+          @if($product->starts_on <= Carbon\Carbon::now())
           <form action="{{route('orders.store',['product'=>$product->hash])}}" method="post" class="d-flex justify-content-left">
             @csrf
             <!-- Default input -->
@@ -94,8 +95,13 @@
           </form>
           <br>
           <p class="lead font-weight-bold">
-            Bidding will end at {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}
+            Bidding will end in {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}
           </p>
+          @else
+          <p class="lead font-weight-bold">
+            Bidding will start in {{Carbon\Carbon::parse($product->starts_on)->format('F j, Y')}}
+          </p>
+          @endif
           @else
           <p class="mb-0 font-weight-bold">Bidding ended last {{Carbon\Carbon::parse($product->ends_on)->format('F j, Y')}}</p>
           @endif
