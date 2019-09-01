@@ -14,6 +14,9 @@ class Products extends Model
 
   protected $appends = ['hash','ilan'];
 
+  public function getBasePriceAttribute($value){
+    return number_format($value,2);
+  }
   public function getHashAttribute()
   {
     return Hashids::encode($this->id);
@@ -58,4 +61,5 @@ class Products extends Model
   public function winner(){
     return $this->hasOneThrough('App\OrderStatus','App\Orders','product_id','order_id');
   }
+
 }

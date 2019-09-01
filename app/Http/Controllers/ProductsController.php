@@ -8,6 +8,7 @@ use Vinkla\Hashids\Facades\Hashids;
 use App\ProductCategory;
 use App\Status;
 use App\Query;
+use App\OrderStatus;
 class ProductsController extends Controller
 {
   /**
@@ -23,6 +24,7 @@ class ProductsController extends Controller
       $category = Hashids::decode($request->code)[0];
       $categories = ProductCategory::where('category_id',$category)->groupBy('product_id')->pluck('product_id');
       $searches = Query::selectRaw("search,count(id) as count")->groupBy('search')->orderBy('count','desc')->limit(3)->get();
+      $top3Sold = Products::selectRaw("title,count(id) as count")->whereHas('winner')->groupBy('title')->orderBy('count','desc')->limit(3)->get();
       if($request->product_name){
         $query = new Query();
         $query->search = mb_strtolower($request->product_name);
@@ -33,6 +35,7 @@ class ProductsController extends Controller
       }
     }else{
       $searches = Query::selectRaw("search,count(id) as count")->groupBy('search')->orderBy('count','desc')->limit(3)->get();
+      $top3Sold = Products::selectRaw("title,count(id) as count")->whereHas('winner')->groupBy('title')->orderBy('count','desc')->limit(3)->get();
       if($request->product_name){
         $query = new Query();
         $query->search = mb_strtolower($request->product_name);
@@ -43,7 +46,7 @@ class ProductsController extends Controller
       }
     }
 
-    return view('products.products',compact('products','searches'));
+    return view('products.products',compact('products','searches','top3Sold'));
   }
 
   public function sold(Request $request){

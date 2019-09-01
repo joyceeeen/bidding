@@ -80,6 +80,72 @@
 
 
 
+        <!-- Section heading -->
+        <div class="row pb-5">
+          <div class="col-lg-6">
+            <h5 class="section-title h1">Market Price Prediction</h5>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="thead-dark">
+                  <tr>
+
+                    <th scope="col">Product</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Date Uploaded</th>
+                    <th scope="col">Update Model</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($users as $user)
+                  <tr>
+                    <td>{{$user->last_name}}</td>
+                    <td>{{$user->first_name}}</td>
+                    <td>Date</td>
+                    <td>
+                      <input type="hidden" name="user" value="{{$user->hash}}"/>
+                      <button type="submit" name="button" class="btn btn-primary">Upload</button>
+                    </td>
+
+                    </form>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h5 class="section-title h1">Market Demand Prediction</h5>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="thead-dark">
+                  <tr>
+
+                    <th scope="col">Product</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Date Uploaded</th>
+                    <th scope="col">Update Model</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($users as $user)
+                  <tr>
+                    <td>{{$user->last_name}}</td>
+                    <td>{{$user->first_name}}</td>
+                    <td>date</td>
+                    <td>
+                      <input type="hidden" name="user" value="{{$user->hash}}"/>
+                      <button type="submit" name="button" class="btn btn-primary">Upload</button>
+                    </td>
+                    </form>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
 
 

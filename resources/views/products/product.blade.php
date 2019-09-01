@@ -84,11 +84,11 @@
           @else
           @if($product->ends_on >= Carbon\Carbon::now() )
           @if($product->starts_on <= Carbon\Carbon::now())
-          <form action="{{route('orders.store',['product'=>$product->hash])}}" method="post" class="d-flex justify-content-left">
+          <form action="{{route('orders.store',['product'=>$product->hash])}}" method="post" id="bid-form" class="d-flex justify-content-left">
             @csrf
             <!-- Default input -->
             <input type="hidden" name="lastBid" value="{{$product->lastBid != null ? $product->lastBid->amount : $product->base_price }}"/>
-            <input type="number" min="{{$product->lastBid != null ? $product->lastBid->amount + 1 : $product->base_price + 1 }}" name="bid" autocomplete="off" class="form-control" style="width: 100px" required>
+            <input type="number" min="{{$product->lastBid != null ? str_replace(',','',$product->lastBid->amount) + .01  : str_replace(',', '',$product->base_price) + .01  }}" step="0.01" title="Bid" pattern="^\d+(?:\.\d{1,2})?$" name="bid" autocomplete="off" class="form-control" style="width: 100px" required>
             <button class="btn btn-success btn-md my-0 p" type="submit"> Bid
               <i class="fas fa-gavel ml-1"></i>
             </button>
@@ -129,37 +129,37 @@
     </div>
 
     <!--Grid row-->
-      <h2 class="font-weight-bold" style="text-align:left">Reviews</h2>
-      <hr>
-      <div class="reviews">
-        @foreach($product->ratings as $rate)
-        <div class="row review-item">
-          <div class="col-md-3 text-center">
-            <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-            <div class="caption">
-              <small>by <a href="#joe">{{$rate->user->name}}</a></small>
-            </div>
-
+    <h2 class="font-weight-bold" style="text-align:left">Reviews</h2>
+    <hr>
+    <div class="reviews">
+      @foreach($product->ratings as $rate)
+      <div class="row review-item">
+        <div class="col-md-3 text-center">
+          <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+          <div class="caption">
+            <small>by <a href="#joe">{{$rate->user->name}}</a></small>
           </div>
-          <div class="col-md-9">
-            <h4>{{$rate->title}}</h4>
-              <div class="rating" data-rating="{{$rate->rate}}">
-                <span class="far fa-star" data-score='1'></span>
-                <span class="far fa-star" data-score='2'></span>
-                <span class="far fa-star" data-score='3'></span>
-                <span class="far fa-star" data-score='4'></span>
-                <span class="far fa-star" data-score='5'></span>
-              </div>
-            <p class="review-text">
-              {{$rate->comment}}
-            </p>
 
-            <small class="review-date">{{\Carbon\Carbon::parse($rate->created_at)->format('F d, Y')}}</small>
-            <hr>
-          </div>
         </div>
-        @endforeach
+        <div class="col-md-9">
+          <h4>{{$rate->title}}</h4>
+          <div class="rating" data-rating="{{$rate->rate}}">
+            <span class="far fa-star" data-score='1'></span>
+            <span class="far fa-star" data-score='2'></span>
+            <span class="far fa-star" data-score='3'></span>
+            <span class="far fa-star" data-score='4'></span>
+            <span class="far fa-star" data-score='5'></span>
+          </div>
+          <p class="review-text">
+            {{$rate->comment}}
+          </p>
+
+          <small class="review-date">{{\Carbon\Carbon::parse($rate->created_at)->format('F d, Y')}}</small>
+          <hr>
+        </div>
       </div>
+      @endforeach
+    </div>
 
 
 

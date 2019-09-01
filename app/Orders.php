@@ -22,4 +22,11 @@ class Orders extends Model
     return $this->hasOne('App\OrderStatus','order_id','id');
   }
 
+  public function getAmountAttribute($value){
+    return number_format($value,2);
+
+  }
+
+
+
 }

@@ -103,9 +103,6 @@ $(document).ready(function() {
     });
 
   });
-
-
-
   $("#peakBtn").on('click',function(){
 
     var date = $(".month-select").val()+' 01,'+$(".year-select").val();
@@ -125,7 +122,19 @@ $(document).ready(function() {
     });
 
   });
+  $("#bid-form").on("submit",function(event){
+    event.preventDefault();
+    var lastBid = $(this).find('[name="lastBid"]').val() + 10000;
+    var nowBid = $(this).find('[name="bid"]').val();
+    if(nowBid > lastBid){
+      if(confirm("NO to bogus bids.")){
+        $(this).unbind('submit').submit()
+      }else{
+        return false;
+      }
+    }
 
+  });
   $("#searchSubmit").on("submit", function(event){
     event.stopPropagation();
     event.preventDefault(); //prevent submission

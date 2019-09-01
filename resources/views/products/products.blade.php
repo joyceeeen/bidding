@@ -38,8 +38,10 @@
         </div>
       </div>
 
+      @if($searches)
+      <h5 class="h5-responsive font-weight-bold">TOP 3 MOST SEARCH</h5>
       <div class="row pb-4">
-        @if($searches)
+
         @foreach($searches as $s)
 
         <div class="col-lg-4">
@@ -57,8 +59,32 @@
           </div>
         </div>
         @endforeach
-        @endif
       </div>
+      @endif
+
+      @if($top3Sold)
+      <h5 class="h5-responsive font-weight-bold">TOP 3 SOLD PRODUCTS</h5>
+      <div class="row pb-4">
+
+        @foreach($top3Sold as $t)
+
+        <div class="col-lg-4">
+          <form id="searchSubmit" method="get" action="{{route('product.index')}}">
+            <!-- <div class="card"> -->
+            <!-- <div class="card-body"> -->
+            <input type="hidden" name="product_name" value="{{$t->title}}" autocomplete="off" class="form-control" placeholder="Product Name">
+            <div class="row">
+              <div class="col-lg searchCol" >
+                <button type="submit" class="btn " style="width:100%;">{{$t->title}}</button>
+              </div>
+              <!-- </div> -->
+              <!-- </div> -->
+            </form>
+          </div>
+        </div>
+        @endforeach
+      </div>
+      @endif
       <!-- Grid row -->
       <div class="row">
 

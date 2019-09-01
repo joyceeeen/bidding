@@ -51,6 +51,24 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
+          <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              Categories <span class="caret"></span>
+            </a>
+
+
+
+            <div class="dropdown-menu dropdown-menu-right">
+
+              <a class="dropdown-item" href="{{route('product.index',['category'=>'Vegetables','code'=>'028n2e'])}}">Vegetables</a>
+
+              <a class="dropdown-item" href="{{route('product.index',['category'=>'Vegetables','code'=>'n2y83w'])}}">Fruits</a>
+
+              <a class="dropdown-item" href="{{route('product.index',['category'=>'Vegetables','code'=>'ko5eoe'])}}">Fish</a>
+              <a class="dropdown-item" href="{{route('product.index',['category'=>'Vegetables','code'=>'w30n25'])}}">Poultry</a>
+
+          </div>
+        </li>
 
         </ul>
 

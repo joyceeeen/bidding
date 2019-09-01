@@ -152,6 +152,11 @@
                 <option value="kg">Kilogram (kg)</option>
                 <option value="g">Grams (g)</option>
                 <option value="lb">Pounds (lb)</option>
+                <option value="sacks">Sacks</option>
+                <option value="fish buckets">Fish Buckets</option>
+                <option value="chicken buckets">Chicken Buckets</option>
+                <option value="kaing">Kaing</option>
+
               </select>
               <label for="status">Unit</label>
               @error('unit')
