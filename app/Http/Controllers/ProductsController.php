@@ -52,8 +52,12 @@ class ProductsController extends Controller
   public function sold(Request $request){
     $user = auth()->user();
     $products = Products::where('user_id',$user->id)->whereHas('winner')->with(['winner.status','ratings'])->get();
+    $ended = Products::where('user_id',$user->id)->where('has_ended',1)->whereHas('bids')->whereDoesntHave('winner')->with(['bids'=>function($query){
+      $query->orderBy('amount','desc');
+    }])->get();
+
     $statuses = Status::get();
-    return view('seller.sold-products',compact('products','user','statuses'));
+    return view('seller.sold-products',compact('products','user','statuses','ended'));
   }
   /**
   * Show the form for creating a new resource.

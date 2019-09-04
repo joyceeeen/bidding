@@ -42,6 +42,8 @@ class Products extends Model
     return $this->hasMany('App\Orders','product_id');
   }
 
+
+
   public function ratings(){
     return $this->hasMany('App\Ratings','product_id');
   }

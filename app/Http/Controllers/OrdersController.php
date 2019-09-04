@@ -36,6 +36,52 @@ class OrdersController extends Controller
     return view('products.winning',compact('product','averageRate'));
   }
 
+
+  public function pickWinner(Request $request){
+      $lastBid = Orders::find($request->id);
+      $product = $lastBid->product;
+
+      $details  = null;
+
+      if($lastBid){
+        $order = new OrderStatus();
+        $order->order_id = $lastBid->id;
+        $order->status_id = 1;
+        $order->save();
+
+        $details2 = [
+          'greeting' => mb_strtoupper($product->title).': You won the bidding!',
+          'body' => "Last Price: PHP ".$lastBid->amount,
+          'actionText'=>'',
+          'actionURL' => route('order.status', ['product'=>$product->hash]),
+          'order_id' => $lastBid->id
+        ];
+
+        $details = [
+          'greeting' => mb_strtoupper($product->title).': BIDDING ENDED!',
+          'body' => "Last Price: PHP ".$lastBid->amount,
+          'actionText'=>'',
+          'actionURL' => route('sold.products'),
+          'order_id' => $lastBid->id
+        ];
+         Notification::send($lastBid->user, new OrderNotification($details2));
+            //SEND EMAIL
+      }else{
+        $details = [
+          'greeting' => mb_strtoupper($product->title).': BIDDING EXPIRED!',
+          'body' => "No one bidded on your product. :(",
+          'actionText'=>'',
+          'actionURL' => route('sold.products'),
+          'order_id' => ''
+        ];
+      }
+      
+      Notification::send($product->seller, new OrderNotification($details));
+
+
+    return redirect()->back()->with('success','Thank you for choosing a winner!');
+  }
+
   public function myOrders(){
     $auth = auth()->user();
 

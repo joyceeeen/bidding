@@ -80,72 +80,79 @@
 
 
 
-        <!-- Section heading -->
-        <div class="row pb-5">
-          <div class="col-lg-6">
-            <h5 class="section-title h1">Market Price Prediction</h5>
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead class="thead-dark">
-                  <tr>
+      <!-- Section heading -->
+      <div class="row pb-5">
+        <div class="col-lg-6">
+          <h5 class="section-title h1">Market Price Prediction</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
 
-                    <th scope="col">Product</th>
-                    <th scope="col">Model</th>
-                    <th scope="col">Date Uploaded</th>
-                    <th scope="col">Update Model</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Last Uploaded</th>
+                  <th scope="col">Update Model</th>
 
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($users as $user)
-                  <tr>
-                    <td>{{$user->last_name}}</td>
-                    <td>{{$user->first_name}}</td>
-                    <td>Date</td>
-                    <td>
-                      <input type="hidden" name="user" value="{{$user->hash}}"/>
-                      <button type="submit" name="button" class="btn btn-primary">Upload</button>
-                    </td>
-
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($models->where('type',1) as $price)
+                <tr>
+                  <td>{{$price->product}}</td>
+                  <td>{{$price->model}}</td>
+                  <td>{{$price->updated_at}}</td>
+                  <td>
+                    <form class="uploadModel" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="type" value="1">
+                      <input type="hidden" name="id" value="{{$price->id}}">
+                      <input type="file" name="model" class="upload-model" class="btn btn-primary">
                     </form>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <h5 class="section-title h1">Market Demand Prediction</h5>
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead class="thead-dark">
-                  <tr>
+                  </td>
 
-                    <th scope="col">Product</th>
-                    <th scope="col">Model</th>
-                    <th scope="col">Date Uploaded</th>
-                    <th scope="col">Update Model</th>
 
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($users as $user)
-                  <tr>
-                    <td>{{$user->last_name}}</td>
-                    <td>{{$user->first_name}}</td>
-                    <td>date</td>
-                    <td>
-                      <input type="hidden" name="user" value="{{$user->hash}}"/>
-                      <button type="submit" name="button" class="btn btn-primary">Upload</button>
-                    </td>
-                    </form>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
           </div>
         </div>
+        <div class="col-lg-6">
+          <h5 class="section-title h1">Market Demand Prediction</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+
+                  <th scope="col">Product</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Last Uploaded</th>
+                  <th scope="col">Update Model</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($models->where('type',2) as $demand)
+                <tr>
+                  <td>{{$demand->product}}</td>
+                  <td>{{$demand->model}}</td>
+                  <td>{{$demand->updated_at}}</td>
+                  <td>
+                    <form class="uploadModel" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="type" value="2">
+                      <input type="hidden" name="id" value="{{$demand->id}}">
+                      <input type="file" name="model" class="upload-model" class="btn btn-primary">
+                    </form>
+
+                  </td>
+
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -181,8 +188,8 @@
       </div>
       <div class="modal-body">
         <center>
-        <img src="" class="imagepreview" style="width: 500px;" >
-      </center>
+          <img src="" class="imagepreview" style="width: 500px;" >
+        </center>
       </div>
       <div class="modal-footer">
 

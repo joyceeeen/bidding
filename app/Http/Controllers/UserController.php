@@ -11,6 +11,7 @@ use Image;
 use App\Notifications\OrderNotification;
 use Notification;
 use Vinkla\Hashids\Facades\Hashids;
+use App\Python;
 class UserController extends Controller
 {
   /**
@@ -29,7 +30,8 @@ class UserController extends Controller
 
   public function admin(){
     $users = User::where('is_seller',1)->where('is_confirmed',0)->with('ids')->get();
-    return view('admin',compact('users'));
+    $models = Python::all();
+    return view('admin',compact('users','models'));
   }
 
   public function accept(Request $request){
@@ -135,7 +137,6 @@ class UserController extends Controller
     $fileMake->save($filename);
 
     return response('success',200);
-
   }
 
 

@@ -182,7 +182,6 @@ $(document).ready(function() {
   }
   $("#upload-avatar").on('change',function(event){
     $("#uploadForm").submit();
-
   });
 
   $("#uploadForm").on("submit",function(event){
@@ -204,6 +203,32 @@ $(document).ready(function() {
       }
     });
   });
+
+  $(".upload-model").on('change',function(event){
+    $(this).closest('form').submit();
+  });
+
+  $(".uploadModel").on("submit",function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    var form = new FormData(this);
+    $.ajax({
+      url:'/python',
+      type:'post',
+      data: form,
+      cache: false,
+      contentType: false,
+      processData:false,
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      },
+      success: function(data){
+        location.reload();
+      }
+    });
+  });
+
+
   $(document).on('click','.notification-link',function(event){
 
     var id = $(this).data('id');

@@ -33,6 +33,7 @@ Route::middleware(['auth','admin'])->group(function(){
   Route::get('/admin', 'UserController@admin');
   Route::post('/accept', 'UserController@accept')->name('accept');
   Route::post('/decline', 'UserController@decline')->name('decline');
+  Route::resource('python','PythonController');
 });
 
 Route::get('/run-job','JobController@run');
@@ -75,6 +76,7 @@ Route::prefix('shop')->group(function () {
     Route::get('/product/sold','ProductsController@sold')->name('sold.products');
     Route::get('/','ProductsController@myProducts')->name('product.my-products');
     Route::resource('category','CategoryController');
+    Route::post('pickWinner','OrdersController@pickWinner')->name('pick.winner');
 
   });
 
