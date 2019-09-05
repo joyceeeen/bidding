@@ -76,7 +76,10 @@
                 <div class="md-form">
                   <select name="product" id="province2" class="product-predict mdb-select md-form @error('province') is-invalid @enderror" required>
                     <option value="" disabled selected>Select Product</option>
-                    <option value="ampalaya">Ampalaya</option>
+                    @foreach($products->where('type',1) as $p)
+                    <option value="{{$p->model}}">{{$p->product}}</option>
+                    @endforeach
+                    <!-- <option value="ampalaya">Ampalaya</option>
                     <option value="cabbage">Cabbage</option>
                     <option value="calamansi">Calamansi</option>
                     <option value="kamatis">Kamatis</option>
@@ -85,7 +88,7 @@
                     <option value="pipino">Pipino</option>
                     <option value="sibuyas">Sibuyas</option>
                     <option value="talong">Talong</option>
-                    <option value="WellMilledRice">Well Milled Rice</option>
+                    <option value="WellMilledRice">Well Milled Rice</option> -->
                   </select>
                   <label for="status">Province</label>
                   @error('province')
@@ -152,16 +155,9 @@
               <div class="md-form">
                 <select  name="item" id="item" class="item-select mdb-select md-form @error('province') is-invalid @enderror" required>
                   <option value="" disabled selected>Select Product</option>
-                  <option value="ampalaya">Ampalaya</option>
-                  <option value="cabbage">Cabbage</option>
-                  <option value="calamansi">Calamansi</option>
-                  <option value="kamatis">Kamatis</option>
-                  <option value="karots">Karots</option>
-                  <option value="patatas">Patatas</option>
-                  <option value="pipino">Pipino</option>
-                  <option value="sibuyas">Sibuyas</option>
-                  <option value="talong">Talong</option>
-                  <option value="WellMilledRice">Well Milled Rice</option>
+                  @foreach($products->where('type',2) as $p)
+                  <option value="{{$p->model}}">{{$p->product}}</option>
+                  @endforeach
                 </select>
                 <label for="status">Month</label>
 

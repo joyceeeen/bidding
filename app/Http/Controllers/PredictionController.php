@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use Carbon\Carbon;
+use App\Python;
 use App\PeakSeason;
 class PredictionController extends Controller
 {
 
-
+  public function view(){
+    $products = Python::all();
+    return view('prediction',compact('products'));
+  }
   public function price(Request $request){
 
     $leastDate =  Carbon::createMidnightDate(2015, 1, 1);

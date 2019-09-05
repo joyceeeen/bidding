@@ -209,9 +209,11 @@ $(document).ready(function() {
   });
 
   $(".uploadModel").on("submit",function(event){
+
     event.preventDefault();
     event.stopPropagation();
     var form = new FormData(this);
+    console.log(form);
     $.ajax({
       url:'/python',
       type:'post',

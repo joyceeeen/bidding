@@ -99,14 +99,15 @@
               <tbody>
                 @foreach($models->where('type',1) as $price)
                 <tr>
-                  <td>{{$price->product}}</td>
-                  <td>{{$price->model}}</td>
-                  <td>{{$price->updated_at}}</td>
-                  <td>
+                  <td width="20%">{{$price->product}}</td>
+                  <td width="30%">{{$price->model}}</td>
+                  <td width="20%">{{$price->updated_at}}</td>
+                  <td width="30%">
                     <form class="uploadModel" method="post" enctype="multipart/form-data">
                       <input type="hidden" name="type" value="1">
                       <input type="hidden" name="id" value="{{$price->id}}">
-                      <input type="file" name="model" class="upload-model" class="btn btn-primary">
+                      <input type="file" name="model"  id="file-{{$price->id}}" class="upload-model hidden"/>
+                      <label  for="file-{{$price->id}}" class="btn btn-primary">Upload</label>
                     </form>
                   </td>
 
@@ -134,18 +135,17 @@
               <tbody>
                 @foreach($models->where('type',2) as $demand)
                 <tr>
-                  <td>{{$demand->product}}</td>
-                  <td>{{$demand->model}}</td>
-                  <td>{{$demand->updated_at}}</td>
-                  <td>
+                  <td width="20%">{{$demand->product}}</td>
+                  <td width="30%">{{$demand->model}}</td>
+                  <td width="20%">{{$demand->updated_at}}</td>
+                  <td width="30%">
                     <form class="uploadModel" method="post" enctype="multipart/form-data">
                       <input type="hidden" name="type" value="2">
                       <input type="hidden" name="id" value="{{$demand->id}}">
-                      <input type="file" name="model" class="upload-model" class="btn btn-primary">
+                      <input type="file"  name="model" id="file2-{{$demand->id}}" class="upload-model hidden"/>
+                      <label for="file2-{{$demand->id}}"  class="btn btn-primary">Upload</label>
                     </form>
-
                   </td>
-
                 </tr>
                 @endforeach
               </tbody>
@@ -199,3 +199,12 @@
 </div>
 
 @endsection
+<style media="screen">
+input[type="file"] {
+  background: blue;
+}
+.hidden{
+  visibility: hidden;
+  width: 100%;
+}
+</style>

@@ -39,13 +39,12 @@
             </div>
             @endif
           </div>
+
           <div class="col-lg-12">
             <h2 class="font-weight-bold" style="text-align:left">Bidding Ended
             </h2>
             <hr>
           </div>
-
-
           <div class="col-lg-12">
             <table class="table table-bordered">
               <thead>

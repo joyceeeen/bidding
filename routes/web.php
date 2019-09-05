@@ -16,9 +16,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/products', function () {
   return view('products');
 });
-Route::get('/prediction', function () {
-  return view('prediction');
-});
+Route::get('/prediction','PredictionController@view');
 
 Route::get('/terms', function () {
   return view('terms');
