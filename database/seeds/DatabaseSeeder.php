@@ -11,11 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(CategoryTable::class);
-         $this->call(SubCategoryTable::class);
-         $this->call(StatusSeeder::class);
-         $this->call(AdminSeeder::class);
-         $this->call(ForecastingDataSeed::class);
+         //$this->call(CategoryTable::class);
+//          $this->call(SubCategoryTable::class);
+//          $this->call(StatusSeeder::class);
+//          $this->call(AdminSeeder::class);
+//          $this->call(ForecastingDataSeed::class);
          $this->call(PythonModelSeeder::class);
     }
 }
